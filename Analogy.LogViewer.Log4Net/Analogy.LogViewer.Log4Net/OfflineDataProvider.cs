@@ -61,7 +61,7 @@ namespace Analogy.LogViewer.Log4Net
             return files;
         }
 
-        public Task InitializeDataProviderAsync()
+        public Task InitializeDataProviderAsync(IAnalogyLogger logger)
         {
             return Task.CompletedTask;
         }

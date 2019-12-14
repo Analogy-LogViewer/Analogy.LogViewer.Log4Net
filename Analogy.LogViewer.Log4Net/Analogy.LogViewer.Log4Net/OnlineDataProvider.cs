@@ -18,7 +18,7 @@ namespace Analogy.LogViewer.Log4Net
         public Guid ID { get; } = new Guid("BC02F81A-F102-4894-84B1-9BDEE1251A8C");
         public string OptionalTitle { get; } = string.Empty;
 
-        public Task InitializeDataProviderAsync()
+        public Task InitializeDataProviderAsync(IAnalogyLogger logger)
         {
             return Task.CompletedTask;
         }
