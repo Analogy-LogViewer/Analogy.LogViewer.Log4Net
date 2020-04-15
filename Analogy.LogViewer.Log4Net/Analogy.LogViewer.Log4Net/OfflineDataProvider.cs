@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -10,16 +11,20 @@ using Analogy.Interfaces;
 namespace Analogy.LogViewer.Log4Net
 {
     public class OfflineDataProvider : IAnalogyOfflineDataProvider
-    {
-
+    { 
         public Guid ID { get; } = new Guid("E1696270-97BE-489F-9440-453BEA1AB7B8");
         public string OptionalTitle { get; } = string.Empty;
+        public bool UseCustomColors { get; set; } = false;
         public bool CanSaveToLogFile { get; } = false;
         public string FileOpenDialogFilters { get; } = "All supported log file types|*.log;*.json|Plain Analogy XML log file (*.log)|*.log|Analogy JSON file (*.json)|*.json";
         public string FileSaveDialogFilters { get; } = string.Empty;
         public IEnumerable<string> SupportFormats { get; } = new[] { "*.log", "*.json" };
         public string InitialFolderFullPath { get; } = Environment.CurrentDirectory;
+        public IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders()
+            => Array.Empty<(string, string)>();
 
+        public (Color backgroundColor, Color foregroundColor) GetColorForMessage(IAnalogyLogMessage logMessage)
+            => (Color.Empty, Color.Empty);
         public Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token,
             ILogMessageCreatedHandler messagesHandler)
         {
@@ -38,6 +43,7 @@ namespace Analogy.LogViewer.Log4Net
 
 
         public bool CanOpenAllFiles(IEnumerable<string> fileNames) => fileNames.All(CanOpenFile);
+        public bool DisableFilePoolingOption { get; } = false;
 
         public static List<FileInfo> GetSupportedFilesInternal(DirectoryInfo dirInfo, bool recursive)
         {
