@@ -57,7 +57,7 @@ namespace Analogy.LogViewer.Log4Net
             Settings.FileOpenDialogFilters = txtbOpenFileFilters.Text;
             Settings.SupportFormats = txtbSupportedFiles.Text.Split(new[]{";"},StringSplitOptions.RemoveEmptyEntries ).ToList();
             Settings.RegExPattern.Pattern= txtbRegEx.Text;
-            Settings.RegExPattern.DateTimeFormat=txtbDateTimeFormat.Text ;
+            Settings.RegExPattern.DateTimeFormat=txtbDateTimeFormat.Text;
         }
     }
 }

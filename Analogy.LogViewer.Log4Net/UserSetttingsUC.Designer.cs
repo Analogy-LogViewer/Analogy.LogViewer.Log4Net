@@ -42,6 +42,7 @@
             this.btnTest = new System.Windows.Forms.Button();
             this.lblDateTimeFormat = new System.Windows.Forms.Label();
             this.txtbDateTimeFormat = new System.Windows.Forms.TextBox();
+            this.gbresult = new System.Windows.Forms.GroupBox();
             this.SuspendLayout();
             // 
             // btnBrowser
@@ -178,10 +179,23 @@
             this.txtbDateTimeFormat.TabIndex = 34;
             this.txtbDateTimeFormat.Text = "yyyy-MM-dd HH:mm:ss,fff";
             // 
+            // gbresult
+            // 
+            this.gbresult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbresult.Location = new System.Drawing.Point(0, 272);
+            this.gbresult.Name = "gbresult";
+            this.gbresult.Size = new System.Drawing.Size(835, 170);
+            this.gbresult.TabIndex = 37;
+            this.gbresult.TabStop = false;
+            this.gbresult.Text = "Result";
+            // 
             // UserSetttingsUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.gbresult);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.lblLogTest);
             this.Controls.Add(this.txtbDateTimeFormat);
@@ -220,5 +234,6 @@
         private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.Label lblDateTimeFormat;
         private System.Windows.Forms.TextBox txtbDateTimeFormat;
+        private System.Windows.Forms.GroupBox gbresult;
     }
 }

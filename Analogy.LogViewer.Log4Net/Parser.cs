@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Analogy.Interfaces;
+using Analogy.LogViewer.Log4Net.Managers;
 
 namespace Analogy.LogViewer.Log4Net
 {
@@ -121,7 +122,19 @@ T
 
             foreach (var logPattern in LogPatterns)
             {
-                var match = Regex.Match(line, logPattern.Pattern,
+                var result= TryParse(line, logPattern,out AnalogyLogMessage message);
+                if (result)
+                    return message;
+
+            }
+            return null;
+        }
+
+        public static bool TryParse(string line, RegExPattern regex,out AnalogyLogMessage message)
+        {
+            try
+            {
+                Match match = Regex.Match(line, regex.Pattern,
                     RegexOptions.Compiled | RegexOptions.IgnorePatternWhitespace);
                 if (match.Success)
                 {
@@ -139,7 +152,7 @@ T
 
                     var m = new AnalogyLogMessage()
                     {
-                        Date = DateTime.ParseExact(match.Groups["date"].Value, logPattern.DateTimeFormat,
+                        Date = DateTime.ParseExact(match.Groups["date"].Value, regex.DateTimeFormat,
                             CultureInfo.InvariantCulture),
                         Thread = thread != null ? int.Parse(thread) : 0,
                         ProcessID = process != null ? int.Parse(process) : 0,
@@ -174,14 +187,21 @@ T
                             break;
                     }
 
-                    return m;
+                    message=m;
+                    return true;
                 }
+
+                message= null;
+                return false;
             }
-
-            return null;
+            catch (Exception e)
+            {
+                string error = $"Error parsing line; {e.Message}";
+                LogManager.Instance.LogException(e,nameof(Parser),error);
+              message= new AnalogyLogMessage(error,AnalogyLogLevel.Error,AnalogyLogClass.General,nameof(Parser));
+              return false;
+            }
         }
-
-        
         public async Task<List<AnalogyLogMessage>> ParseLog(string fileName, CancellationToken token,
             ILogMessageCreatedHandler messagesHandler)
         {
