@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Analogy.Interfaces;
+using Analogy.LogViewer.Log4Net.Managers;
 
 namespace Analogy.LogViewer.Log4Net
 {
@@ -16,10 +17,11 @@ namespace Analogy.LogViewer.Log4Net
         public string OptionalTitle { get; } = string.Empty;
         public bool UseCustomColors { get; set; } = false;
         public bool CanSaveToLogFile { get; } = false;
-        public string FileOpenDialogFilters { get; } = "All supported log file types|*.log;*.json|Plain Analogy XML log file (*.log)|*.log|Analogy JSON file (*.json)|*.json";
+        public string FileOpenDialogFilters => UserSettingsManager.UserSettings.Settings.FileOpenDialogFilters;
         public string FileSaveDialogFilters { get; } = string.Empty;
-        public IEnumerable<string> SupportFormats { get; } = new[] { "*.log", "*.json" };
+        public IEnumerable<string> SupportFormats => UserSettingsManager.UserSettings.Settings.SupportFormats;
         public string InitialFolderFullPath { get; } = Environment.CurrentDirectory;
+        public bool DisableFilePoolingOption { get; } = false;
         public IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders()
             => Array.Empty<(string, string)>();
 
@@ -29,8 +31,8 @@ namespace Analogy.LogViewer.Log4Net
             ILogMessageCreatedHandler messagesHandler)
         {
             var parser = new Parser();
-         List<AnalogyLogMessage> messages=await parser.ParseLog(fileName, token, messagesHandler);
-         return messages;
+            List<AnalogyLogMessage> messages = await parser.ParseLog(fileName, token, messagesHandler);
+            return messages;
         }
 
         public IEnumerable<FileInfo> GetSupportedFiles(DirectoryInfo dirInfo, bool recursiveLoad)
@@ -38,20 +40,14 @@ namespace Analogy.LogViewer.Log4Net
 
         public Task SaveAsync(List<AnalogyLogMessage> messages, string fileName) => Task.CompletedTask;
 
-        public bool CanOpenFile(string fileName)
-
-            => fileName.EndsWith(".log", StringComparison.InvariantCultureIgnoreCase) ||
-               fileName.EndsWith(".json", StringComparison.InvariantCultureIgnoreCase);
-
+        public bool CanOpenFile(string fileName) => fileName.EndsWith(".log", StringComparison.InvariantCultureIgnoreCase);
 
         public bool CanOpenAllFiles(IEnumerable<string> fileNames) => fileNames.All(CanOpenFile);
-        public bool DisableFilePoolingOption { get; } = false;
+
 
         public static List<FileInfo> GetSupportedFilesInternal(DirectoryInfo dirInfo, bool recursive)
         {
-            List<FileInfo> files = dirInfo.GetFiles("*.log")
-                .Concat(dirInfo.GetFiles("*.json"))
-                .ToList();
+            List<FileInfo> files = dirInfo.GetFiles("*.log").ToList();
             if (!recursive)
                 return files;
             try
@@ -71,6 +67,7 @@ namespace Analogy.LogViewer.Log4Net
 
         public Task InitializeDataProviderAsync(IAnalogyLogger logger)
         {
+            LogManager.Instance.SetLogger(logger);
             return Task.CompletedTask;
         }
 
