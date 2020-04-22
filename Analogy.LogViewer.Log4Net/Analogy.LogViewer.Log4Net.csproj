@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFrameworks>netcoreapp3.1;net472</TargetFrameworks>
+    <TargetFrameworks>net472;netcoreapp3.1</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
@@ -16,6 +16,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageIcon>Analogy.Log4Net.png</PackageIcon>
     <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
