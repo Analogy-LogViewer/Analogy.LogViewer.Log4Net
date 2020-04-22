@@ -25,10 +25,12 @@ namespace Analogy.LogViewer.Log4Net
 
         public (Color backgroundColor, Color foregroundColor) GetColorForMessage(IAnalogyLogMessage logMessage)
             => (Color.Empty, Color.Empty);
-        public Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token,
+        public async Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token,
             ILogMessageCreatedHandler messagesHandler)
         {
-            throw new NotImplementedException();
+            var parser = new Parser();
+         List<AnalogyLogMessage> messages=await parser.ParseLog(fileName, token, messagesHandler);
+         return messages;
         }
 
         public IEnumerable<FileInfo> GetSupportedFiles(DirectoryInfo dirInfo, bool recursiveLoad)
