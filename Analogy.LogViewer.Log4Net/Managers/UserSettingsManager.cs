@@ -15,19 +15,26 @@ namespace Analogy.LogViewer.Log4Net.Managers
         public UserSettings Settings { get; }
 
         public UserSettingsManager()
-        {
-            Settings = new UserSettings();
+        {         
             if (File.Exists(RepositoriesSettingFile))
             {
                 try
                 {
+                    var settings = new JsonSerializerSettings
+                    {
+                        ObjectCreationHandling = ObjectCreationHandling.Replace
+                    };
                     string data = File.ReadAllText(RepositoriesSettingFile);
-                    Settings = JsonConvert.DeserializeObject<UserSettings>(data);
+                    Settings = JsonConvert.DeserializeObject<UserSettings>(data,settings);
                 }
                 catch (Exception ex)
                 {
                     LogManager.Instance.LogCritical("", $"Unable to read file {RepositoriesSettingFile}: {ex}");
                 }
+            }
+            else
+            { 
+                Settings = new UserSettings(); 
             }
         }
 

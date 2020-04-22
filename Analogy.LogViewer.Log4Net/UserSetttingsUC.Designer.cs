@@ -52,9 +52,9 @@
             // btnBrowser
             // 
             this.btnBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBrowser.Location = new System.Drawing.Point(809, 22);
+            this.btnBrowser.Location = new System.Drawing.Point(809, 25);
             this.btnBrowser.Name = "btnBrowser";
-            this.btnBrowser.Size = new System.Drawing.Size(47, 22);
+            this.btnBrowser.Size = new System.Drawing.Size(47, 25);
             this.btnBrowser.TabIndex = 28;
             this.btnBrowser.Text = "...";
             this.btnBrowser.UseVisualStyleBackColor = true;
@@ -64,17 +64,17 @@
             // 
             this.txtLogsLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLogsLocation.Location = new System.Drawing.Point(189, 22);
+            this.txtLogsLocation.Location = new System.Drawing.Point(189, 25);
             this.txtLogsLocation.Name = "txtLogsLocation";
-            this.txtLogsLocation.Size = new System.Drawing.Size(614, 22);
+            this.txtLogsLocation.Size = new System.Drawing.Size(614, 26);
             this.txtLogsLocation.TabIndex = 27;
             // 
             // lblPath
             // 
             this.lblPath.AutoSize = true;
-            this.lblPath.Location = new System.Drawing.Point(7, 25);
+            this.lblPath.Location = new System.Drawing.Point(7, 28);
             this.lblPath.Name = "lblPath";
-            this.lblPath.Size = new System.Drawing.Size(146, 17);
+            this.lblPath.Size = new System.Drawing.Size(147, 18);
             this.lblPath.TabIndex = 26;
             this.lblPath.Text = "Default Logs Location";
             // 
@@ -82,17 +82,17 @@
             // 
             this.txtbOpenFileFilters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbOpenFileFilters.Location = new System.Drawing.Point(189, 61);
+            this.txtbOpenFileFilters.Location = new System.Drawing.Point(189, 69);
             this.txtbOpenFileFilters.Name = "txtbOpenFileFilters";
-            this.txtbOpenFileFilters.Size = new System.Drawing.Size(614, 22);
+            this.txtbOpenFileFilters.Size = new System.Drawing.Size(614, 26);
             this.txtbOpenFileFilters.TabIndex = 30;
             // 
             // lblOpenfilesFilters
             // 
             this.lblOpenfilesFilters.AutoSize = true;
-            this.lblOpenfilesFilters.Location = new System.Drawing.Point(7, 64);
+            this.lblOpenfilesFilters.Location = new System.Drawing.Point(7, 72);
             this.lblOpenfilesFilters.Name = "lblOpenfilesFilters";
-            this.lblOpenfilesFilters.Size = new System.Drawing.Size(104, 17);
+            this.lblOpenfilesFilters.Size = new System.Drawing.Size(105, 18);
             this.lblOpenfilesFilters.TabIndex = 29;
             this.lblOpenfilesFilters.Text = "Open file Filter:";
             // 
@@ -100,17 +100,17 @@
             // 
             this.txtbSupportedFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbSupportedFiles.Location = new System.Drawing.Point(189, 99);
+            this.txtbSupportedFiles.Location = new System.Drawing.Point(189, 111);
             this.txtbSupportedFiles.Name = "txtbSupportedFiles";
-            this.txtbSupportedFiles.Size = new System.Drawing.Size(614, 22);
+            this.txtbSupportedFiles.Size = new System.Drawing.Size(614, 26);
             this.txtbSupportedFiles.TabIndex = 32;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 102);
+            this.label2.Location = new System.Drawing.Point(7, 115);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(161, 17);
+            this.label2.Size = new System.Drawing.Size(166, 18);
             this.label2.TabIndex = 31;
             this.label2.Text = "Supported Log Formats:";
             // 
@@ -118,18 +118,18 @@
             // 
             this.txtbRegEx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbRegEx.Location = new System.Drawing.Point(189, 147);
+            this.txtbRegEx.Location = new System.Drawing.Point(189, 165);
             this.txtbRegEx.Name = "txtbRegEx";
-            this.txtbRegEx.Size = new System.Drawing.Size(614, 22);
+            this.txtbRegEx.Size = new System.Drawing.Size(614, 26);
             this.txtbRegEx.TabIndex = 34;
             // 
             // lblRegex
             // 
             this.lblRegex.AccessibleDescription = "";
             this.lblRegex.AutoSize = true;
-            this.lblRegex.Location = new System.Drawing.Point(7, 150);
+            this.lblRegex.Location = new System.Drawing.Point(7, 169);
             this.lblRegex.Name = "lblRegex";
-            this.lblRegex.Size = new System.Drawing.Size(170, 17);
+            this.lblRegex.Size = new System.Drawing.Size(170, 18);
             this.lblRegex.TabIndex = 33;
             this.lblRegex.Text = "Logs Regular Expression:";
             // 
@@ -137,27 +137,27 @@
             // 
             this.txtbTest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbTest.Location = new System.Drawing.Point(189, 217);
+            this.txtbTest.Location = new System.Drawing.Point(189, 244);
             this.txtbTest.Name = "txtbTest";
-            this.txtbTest.Size = new System.Drawing.Size(614, 22);
+            this.txtbTest.Size = new System.Drawing.Size(614, 26);
             this.txtbTest.TabIndex = 36;
             // 
             // lblLogTest
             // 
             this.lblLogTest.AccessibleDescription = "";
             this.lblLogTest.AutoSize = true;
-            this.lblLogTest.Location = new System.Drawing.Point(7, 220);
+            this.lblLogTest.Location = new System.Drawing.Point(7, 248);
             this.lblLogTest.Name = "lblLogTest";
-            this.lblLogTest.Size = new System.Drawing.Size(105, 17);
+            this.lblLogTest.Size = new System.Drawing.Size(109, 18);
             this.lblLogTest.TabIndex = 35;
             this.lblLogTest.Text = "Log line to test:";
             // 
             // btnTest
             // 
             this.btnTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTest.Location = new System.Drawing.Point(809, 217);
+            this.btnTest.Location = new System.Drawing.Point(809, 244);
             this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(47, 22);
+            this.btnTest.Size = new System.Drawing.Size(47, 25);
             this.btnTest.TabIndex = 28;
             this.btnTest.Text = "Test";
             this.btnTest.UseVisualStyleBackColor = true;
@@ -167,9 +167,9 @@
             // 
             this.lblDateTimeFormat.AccessibleDescription = "";
             this.lblDateTimeFormat.AutoSize = true;
-            this.lblDateTimeFormat.Location = new System.Drawing.Point(7, 178);
+            this.lblDateTimeFormat.Location = new System.Drawing.Point(7, 200);
             this.lblDateTimeFormat.Name = "lblDateTimeFormat";
-            this.lblDateTimeFormat.Size = new System.Drawing.Size(170, 17);
+            this.lblDateTimeFormat.Size = new System.Drawing.Size(170, 18);
             this.lblDateTimeFormat.TabIndex = 33;
             this.lblDateTimeFormat.Text = "Logs Regular Expression:";
             // 
@@ -177,9 +177,9 @@
             // 
             this.txtbDateTimeFormat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbDateTimeFormat.Location = new System.Drawing.Point(189, 175);
+            this.txtbDateTimeFormat.Location = new System.Drawing.Point(189, 197);
             this.txtbDateTimeFormat.Name = "txtbDateTimeFormat";
-            this.txtbDateTimeFormat.Size = new System.Drawing.Size(614, 22);
+            this.txtbDateTimeFormat.Size = new System.Drawing.Size(614, 26);
             this.txtbDateTimeFormat.TabIndex = 34;
             this.txtbDateTimeFormat.Text = "yyyy-MM-dd HH:mm:ss,fff";
             // 
@@ -190,9 +190,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbresult.Controls.Add(this.lblResultMessage);
             this.gbresult.Controls.Add(this.lblResult);
-            this.gbresult.Location = new System.Drawing.Point(0, 272);
+            this.gbresult.Location = new System.Drawing.Point(0, 306);
             this.gbresult.Name = "gbresult";
-            this.gbresult.Size = new System.Drawing.Size(782, 170);
+            this.gbresult.Size = new System.Drawing.Size(782, 191);
             this.gbresult.TabIndex = 37;
             this.gbresult.TabStop = false;
             this.gbresult.Text = "Result";
@@ -200,25 +200,25 @@
             // lblResultMessage
             // 
             this.lblResultMessage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblResultMessage.Location = new System.Drawing.Point(3, 35);
+            this.lblResultMessage.Location = new System.Drawing.Point(3, 41);
             this.lblResultMessage.Name = "lblResultMessage";
-            this.lblResultMessage.Size = new System.Drawing.Size(776, 132);
+            this.lblResultMessage.Size = new System.Drawing.Size(776, 147);
             this.lblResultMessage.TabIndex = 31;
             // 
             // lblResult
             // 
             this.lblResult.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblResult.Location = new System.Drawing.Point(3, 18);
+            this.lblResult.Location = new System.Drawing.Point(3, 22);
             this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(776, 17);
+            this.lblResult.Size = new System.Drawing.Size(776, 19);
             this.lblResult.TabIndex = 30;
             // 
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(788, 417);
+            this.btnSave.Location = new System.Drawing.Point(788, 469);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(65, 22);
+            this.btnSave.Size = new System.Drawing.Size(65, 25);
             this.btnSave.TabIndex = 38;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -226,7 +226,7 @@
             // 
             // UserSetttingsUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.gbresult);
@@ -244,8 +244,9 @@
             this.Controls.Add(this.btnBrowser);
             this.Controls.Add(this.txtLogsLocation);
             this.Controls.Add(this.lblPath);
+            this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "UserSetttingsUC";
-            this.Size = new System.Drawing.Size(859, 460);
+            this.Size = new System.Drawing.Size(859, 518);
             this.Load += new System.EventHandler(this.UserSetttingsUC_Load);
             this.gbresult.ResumeLayout(false);
             this.ResumeLayout(false);

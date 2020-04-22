@@ -19,5 +19,6 @@ namespace Analogy.LogViewer.Log4Net
             SupportFormats = new List<string> { "*.log" };
             RegExPattern = new RegExPattern();
         }
+
     }
 }
