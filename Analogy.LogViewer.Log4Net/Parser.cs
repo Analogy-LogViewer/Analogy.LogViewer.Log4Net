@@ -15,20 +15,6 @@ namespace Analogy.LogViewer.Log4Net
         private AnalogyLogMessage _current;
 
         public List<AnalogyLogMessage> messages = new List<AnalogyLogMessage>();
-        /* *******************************************************************
-         *  Properties
-         * *******************************************************************/
-
-        public Parser()
-        {
-
-        }
-
-        /* *******************************************************************
-		 *  Methods
-		 * *******************************************************************/
-
-        #region public void ParseLine(string line)
 
         /// <summary>
         /// 
@@ -55,16 +41,12 @@ namespace Analogy.LogViewer.Log4Net
             }
         }
 
-        #endregion
-
-
-        readonly List<LogPattern> _logPatterns = new List<LogPattern>
+        readonly List<RegExPattern> _logPatterns = new List<RegExPattern>
         {
-            new LogPattern(
-//date time level thread logger whut message
+            new RegExPattern(
                 @"\$(?<date>\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2},\d{3})+\|+(?<thread>\d{2})+\|(?<level>\w+)+\|+(?<logger>.*)\|(?<message>.*)",
                 "yyyy-MM-dd HH:mm:ss,fff"),
-            new LogPattern(
+            new RegExPattern(
 //date time level thread logger whut message
                 @"^
 ($<date>\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2},\d{3})\s+
@@ -74,7 +56,7 @@ namespace Analogy.LogViewer.Log4Net
 (?<whut>\S+)\s+
 (?<message>.*)$
 ", "yyyy-MM-dd HH:mm:ss,fff"),
-            new LogPattern(
+            new RegExPattern(
 //date time level thread logger whut message
                 @"^
 (?<date>\d{4}-\d{2}-\d{2}
@@ -87,7 +69,7 @@ namespace Analogy.LogViewer.Log4Net
 (?<message>.*)$
 ", "yyyy-MM-dd HH:mm:ss,fff"),
 //date time thread level logger whut message
-            new LogPattern(@"^
+            new RegExPattern(@"^
 (?<date>\d{4}-\d{2}-\d{2}
 \s
 \d{2}:\d{2}:\d{2},\d{3})\s+
@@ -98,7 +80,7 @@ namespace Analogy.LogViewer.Log4Net
 (?<message>.*)$
 ", "yyyy-MM-dd HH:mm:ss,fff"),
             //Azure log format
-            new LogPattern(@"^
+            new RegExPattern(@"^
 (?<date>\d{4}-\d{2}-\d{2}
 T
 \d{2}:\d{2}:\d{2})\s+
@@ -109,7 +91,7 @@ T
 ", "yyyy-MM-ddTHH:mm:ss")
         };
 
-        private IEnumerable<LogPattern> LogPatterns
+        private IEnumerable<RegExPattern> LogPatterns
         {
             get
             {
@@ -127,9 +109,7 @@ T
             }
         }
 
-        private LogPattern _lastUsedPattern;
-
-        #region public LogEntry ParseEntry(string line)
+        private RegExPattern _lastUsedPattern;
 
         /// <summary>
         /// 
@@ -201,8 +181,7 @@ T
             return null;
         }
 
-        #endregion
-
+        
         public async Task<List<AnalogyLogMessage>> ParseLog(string fileName, CancellationToken token,
             ILogMessageCreatedHandler messagesHandler)
         {
@@ -226,18 +205,7 @@ T
             return parser.messages;
         }
 
-
     }
     }
 
-public class LogPattern
-{
-    public string Pattern { get; }
-    public string DateTimeFormat { get; }
 
-    public LogPattern(string pattern, string dateTimeFormat)
-    {
-        Pattern = pattern;
-        DateTimeFormat = dateTimeFormat;
-    }
-}
