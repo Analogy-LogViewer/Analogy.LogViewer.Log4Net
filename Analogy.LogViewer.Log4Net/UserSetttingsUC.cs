@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.Interfaces;
 using Analogy.LogViewer.Log4Net.Managers;
 using Newtonsoft.Json.Linq;
 
@@ -58,6 +59,28 @@ namespace Analogy.LogViewer.Log4Net
             Settings.SupportFormats = txtbSupportedFiles.Text.Split(new[]{";"},StringSplitOptions.RemoveEmptyEntries ).ToList();
             Settings.RegExPattern.Pattern= txtbRegEx.Text;
             Settings.RegExPattern.DateTimeFormat=txtbDateTimeFormat.Text;
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            RegExPattern p=new RegExPattern(txtbRegEx.Text,txtbDateTimeFormat.Text);
+            bool valid= Parser.TryParse(txtbTest.Text, p,out AnalogyLogMessage m);
+            if (valid)
+            {
+                lblResult.Text = "Valid Regular Expression";
+                lblResult.BackColor = Color.GreenYellow;
+                lblResultMessage.Text = m.ToString();
+            }
+            else
+            {
+                lblResult.Text = "Non Valid Regular Expression";
+                lblResult.BackColor = Color.OrangeRed;
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            SaveSettings();
         }
     }
 }

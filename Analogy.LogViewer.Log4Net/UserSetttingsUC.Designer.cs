@@ -37,12 +37,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtbRegEx = new System.Windows.Forms.TextBox();
             this.lblRegex = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtbTest = new System.Windows.Forms.TextBox();
             this.lblLogTest = new System.Windows.Forms.Label();
             this.btnTest = new System.Windows.Forms.Button();
             this.lblDateTimeFormat = new System.Windows.Forms.Label();
             this.txtbDateTimeFormat = new System.Windows.Forms.TextBox();
             this.gbresult = new System.Windows.Forms.GroupBox();
+            this.lblResultMessage = new System.Windows.Forms.Label();
+            this.lblResult = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.gbresult.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnBrowser
@@ -129,14 +133,14 @@
             this.lblRegex.TabIndex = 33;
             this.lblRegex.Text = "Logs Regular Expression:";
             // 
-            // textBox2
+            // txtbTest
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtbTest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(189, 217);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(614, 22);
-            this.textBox2.TabIndex = 36;
+            this.txtbTest.Location = new System.Drawing.Point(189, 217);
+            this.txtbTest.Name = "txtbTest";
+            this.txtbTest.Size = new System.Drawing.Size(614, 22);
+            this.txtbTest.TabIndex = 36;
             // 
             // lblLogTest
             // 
@@ -157,7 +161,7 @@
             this.btnTest.TabIndex = 28;
             this.btnTest.Text = "Test";
             this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Click += new System.EventHandler(this.btnBrowser_Click);
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // lblDateTimeFormat
             // 
@@ -184,19 +188,49 @@
             this.gbresult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbresult.Controls.Add(this.lblResultMessage);
+            this.gbresult.Controls.Add(this.lblResult);
             this.gbresult.Location = new System.Drawing.Point(0, 272);
             this.gbresult.Name = "gbresult";
-            this.gbresult.Size = new System.Drawing.Size(835, 170);
+            this.gbresult.Size = new System.Drawing.Size(782, 170);
             this.gbresult.TabIndex = 37;
             this.gbresult.TabStop = false;
             this.gbresult.Text = "Result";
+            // 
+            // lblResultMessage
+            // 
+            this.lblResultMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblResultMessage.Location = new System.Drawing.Point(3, 35);
+            this.lblResultMessage.Name = "lblResultMessage";
+            this.lblResultMessage.Size = new System.Drawing.Size(776, 132);
+            this.lblResultMessage.TabIndex = 31;
+            // 
+            // lblResult
+            // 
+            this.lblResult.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblResult.Location = new System.Drawing.Point(3, 18);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(776, 17);
+            this.lblResult.TabIndex = 30;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Location = new System.Drawing.Point(788, 417);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(65, 22);
+            this.btnSave.TabIndex = 38;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // UserSetttingsUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.gbresult);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtbTest);
             this.Controls.Add(this.lblLogTest);
             this.Controls.Add(this.txtbDateTimeFormat);
             this.Controls.Add(this.txtbRegEx);
@@ -213,6 +247,7 @@
             this.Name = "UserSetttingsUC";
             this.Size = new System.Drawing.Size(859, 460);
             this.Load += new System.EventHandler(this.UserSetttingsUC_Load);
+            this.gbresult.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,11 +264,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtbRegEx;
         private System.Windows.Forms.Label lblRegex;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtbTest;
         private System.Windows.Forms.Label lblLogTest;
         private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.Label lblDateTimeFormat;
         private System.Windows.Forms.TextBox txtbDateTimeFormat;
         private System.Windows.Forms.GroupBox gbresult;
+        private System.Windows.Forms.Label lblResultMessage;
+        private System.Windows.Forms.Label lblResult;
+        private System.Windows.Forms.Button btnSave;
     }
 }

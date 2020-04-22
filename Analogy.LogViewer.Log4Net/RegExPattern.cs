@@ -13,7 +13,7 @@ namespace Analogy.LogViewer.Log4Net
         public RegExPattern()
         {
             Pattern = string.Empty;
-            DateTimeFormat = string.Empty;
+            DateTimeFormat = "yyyy-MM-dd HH:mm:ss,fff";
 
         }
         public RegExPattern(string pattern, string dateTimeFormat)
