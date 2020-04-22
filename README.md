@@ -1,5 +1,5 @@
 # Analogy.LogViewer.Log4Net <img src="./Assets/Analogy.Log4Net.png" align="right" width="155px" height="155px">
-Log4Net Lo parser for Analogy Log Viewer
+Log4Net Log parser for Analogy Log Viewer
 
 <p align="center">
 
