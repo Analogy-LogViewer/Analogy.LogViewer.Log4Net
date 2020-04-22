@@ -9,7 +9,7 @@ namespace Analogy.LogViewer.Log4Net
 {
     public class Log4NetDataProvidersFactory : IAnalogyDataProvidersFactory
     {
-        public Guid FactoryId { get; } = new Guid("DBC17C75-5212-46E3-B98A-539E779000E3");
+        public Guid FactoryId { get; } = Log4NetFactory.Log4NetFactoryId;
         public string Title { get; } = "Log4Net Data Providers";
         public IEnumerable<IAnalogyDataProvider> DataProviders { get; } = new List<IAnalogyDataProvider>
             {
