@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Analogy.Interfaces;
@@ -40,8 +41,20 @@ namespace Analogy.LogViewer.Log4Net
 
         public Task SaveAsync(List<AnalogyLogMessage> messages, string fileName) => Task.CompletedTask;
 
-        public bool CanOpenFile(string fileName) => fileName.EndsWith(".log", StringComparison.InvariantCultureIgnoreCase);
-
+        public bool CanOpenFile(string fileName)
+        {
+            foreach (string pattern in UserSettingsManager.UserSettings.Settings.SupportFormats)
+            {
+                if (PatternMatcher.StrictMatchPattern( pattern, fileName))
+                    return true;
+            }
+            return false;
+        } 
+        private bool FitsMask(string fileName, string fileMask)
+        {
+            Regex mask = new Regex(fileName.Replace(".", "[.]").Replace("*", ".*").Replace("?", "."));
+            return mask.IsMatch(fileMask);
+        }
         public bool CanOpenAllFiles(IEnumerable<string> fileNames) => fileNames.All(CanOpenFile);
 
 
