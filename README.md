@@ -5,18 +5,18 @@ Log4Net Log parser for Analogy Log Viewer
 
 [![Gitter](https://badges.gitter.im/Analogy-LogViewer/community.svg)](https://gitter.im/Analogy-LogViewer/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![Build Status](https://dev.azure.com/Analogy-LogViewer/Analogy%20Log%20Viewer/_apis/build/status/Analogy-LogViewer.Analogy.LogViewer.Log4Net?branchName=master)](https://dev.azure.com/Analogy-LogViewer/Analogy%20Log%20Viewer/_build/latest?definitionId=26&branchName=master)
  <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer.Log4Net/issues">
-    <img src="http://img.shields.io/github/issues/Analogy-LogViewer/Analogy.LogViewer.Log4Net" img alt="Issues"/>
+    <img src="http://img.shields.io/github/issues/Analogy-LogViewer/Analogy.LogViewer.Log4Net" alt="Issues"/>
 </a>
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer.Log4Net/blob/master/LICENSE.md">
-    <img src="http://img.shields.io/github/license/Analogy-LogViewer/Analogy.LogViewer.Log4Net" img alt="License"/>
+    <img src="http://img.shields.io/github/license/Analogy-LogViewer/Analogy.LogViewer.Log4Net" alt="License"/>
 </a> 
 
  [![Nuget](https://img.shields.io/nuget/v/Analogy.LogViewer.Log4Net)](https://www.nuget.org/packages/Analogy.LogViewer.Log4Net/)
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer.Log4Net/releases">
-    <img src="http://img.shields.io/github/v/release/Analogy-LogViewer/Analogy.LogViewer.Log4Net" img alt="Latest Release"/>
+    <img src="http://img.shields.io/github/v/release/Analogy-LogViewer/Analogy.LogViewer.Log4Net" alt="Latest Release"/>
 </a> 
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer.Log4Net/compare/V1.0.0...master">
-    <img src="http://img.shields.io/github/commits-since/Analogy-LogViewer/Analogy.LogViewer.Log4Net/latest" img alt="Commits Since Latest Release"/>
+    <img src="http://img.shields.io/github/commits-since/Analogy-LogViewer/Analogy.LogViewer.Log4Net/latest" alt="Commits Since Latest Release"/>
 </a> 
 </p>
 
