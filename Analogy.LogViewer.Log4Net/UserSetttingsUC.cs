@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Analogy.Interfaces;
+﻿using Analogy.Interfaces;
 using Analogy.LogViewer.Log4Net.Managers;
-using Newtonsoft.Json.Linq;
+using System;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Analogy.LogViewer.Log4Net
 {
@@ -47,24 +42,23 @@ namespace Analogy.LogViewer.Log4Net
         {
             txtLogsLocation.Text = Settings.LogsLocation;
             txtbOpenFileFilters.Text = Settings.FileOpenDialogFilters;
-            txtbSupportedFiles.Text = string.Join(";",Settings.SupportFormats.ToList());
-            txtbRegEx.Text = Settings.RegExPattern.Pattern;
-            txtbDateTimeFormat.Text = Settings.RegExPattern.DateTimeFormat;
+            txtbSupportedFiles.Text = string.Join(";", Settings.SupportFormats.ToList());
+            txtbRegEx.Text = string.Join(";", Settings.RegexPatterns.Select(r => r.Pattern));
+            txtbDateTimeFormat.Text = Settings.RegexPatterns.First().DateTimeFormat;
         }
 
         private void SaveSettings()
         {
-            Settings.LogsLocation=txtLogsLocation.Text ;
+            Settings.LogsLocation = txtLogsLocation.Text;
             Settings.FileOpenDialogFilters = txtbOpenFileFilters.Text;
-            Settings.SupportFormats = txtbSupportedFiles.Text.Split(new[]{";"},StringSplitOptions.RemoveEmptyEntries ).ToList();
-            Settings.RegExPattern.Pattern= txtbRegEx.Text;
-            Settings.RegExPattern.DateTimeFormat=txtbDateTimeFormat.Text;
+            Settings.SupportFormats = txtbSupportedFiles.Text.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            Settings.RegexPatterns = txtbRegEx.Text.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries).Select(s => new RegexPattern(s, txtbDateTimeFormat.Text, "")).ToList();
         }
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            RegExPattern p=new RegExPattern(txtbRegEx.Text,txtbDateTimeFormat.Text);
-            bool valid= Parser.TryParse(txtbTest.Text, p,out AnalogyLogMessage m);
+            RegexPattern p = new RegexPattern(txtbRegEx.Text, txtbDateTimeFormat.Text, "");
+            bool valid = RegexParser.CheckRegex(txtbTest.Text, p, out AnalogyLogMessage m);
             if (valid)
             {
                 lblResult.Text = "Valid Regular Expression";

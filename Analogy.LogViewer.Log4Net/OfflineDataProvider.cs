@@ -1,19 +1,18 @@
-﻿using System;
+﻿using Analogy.Interfaces;
+using Analogy.LogViewer.Log4Net.Managers;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Analogy.Interfaces;
-using Analogy.LogViewer.Log4Net.Managers;
 
 namespace Analogy.LogViewer.Log4Net
 {
     public class OfflineDataProvider : IAnalogyOfflineDataProvider
-    { 
+    {
         public Guid ID { get; } = new Guid("E1696270-97BE-489F-9440-453BEA1AB7B8");
         public string OptionalTitle { get; } = string.Empty;
         public bool UseCustomColors { get; set; } = false;
@@ -23,6 +22,7 @@ namespace Analogy.LogViewer.Log4Net
         public IEnumerable<string> SupportFormats => UserSettingsManager.UserSettings.Settings.SupportFormats;
         public string InitialFolderFullPath { get; } = Environment.CurrentDirectory;
         public bool DisableFilePoolingOption { get; } = false;
+        private RegexParser Parser { get; set; }
         public IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders()
             => Array.Empty<(string, string)>();
 
@@ -31,8 +31,8 @@ namespace Analogy.LogViewer.Log4Net
         public async Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token,
             ILogMessageCreatedHandler messagesHandler)
         {
-            var parser = new Parser();
-            List<AnalogyLogMessage> messages = await parser.ParseLog(fileName, token, messagesHandler);
+            
+            List<AnalogyLogMessage> messages = await Parser.ParseLog(fileName, token, messagesHandler);
             return messages;
         }
 
@@ -45,22 +45,23 @@ namespace Analogy.LogViewer.Log4Net
         {
             foreach (string pattern in UserSettingsManager.UserSettings.Settings.SupportFormats)
             {
-                if (PatternMatcher.StrictMatchPattern( pattern, fileName))
+                if (PatternMatcher.StrictMatchPattern(pattern, fileName))
                     return true;
             }
             return false;
-        } 
-        private bool FitsMask(string fileName, string fileMask)
-        {
-            Regex mask = new Regex(fileName.Replace(".", "[.]").Replace("*", ".*").Replace("?", "."));
-            return mask.IsMatch(fileMask);
         }
+   
         public bool CanOpenAllFiles(IEnumerable<string> fileNames) => fileNames.All(CanOpenFile);
 
 
         public static List<FileInfo> GetSupportedFilesInternal(DirectoryInfo dirInfo, bool recursive)
         {
-            List<FileInfo> files = dirInfo.GetFiles("*.log").ToList();
+            List<FileInfo> files = new List<FileInfo>();
+            foreach (string pattern in UserSettingsManager.UserSettings.Settings.SupportFormats)
+            {
+                files.AddRange(dirInfo.GetFiles(pattern).ToList());
+            }
+
             if (!recursive)
                 return files;
             try
@@ -81,6 +82,7 @@ namespace Analogy.LogViewer.Log4Net
         public Task InitializeDataProviderAsync(IAnalogyLogger logger)
         {
             LogManager.Instance.SetLogger(logger);
+            Parser=new RegexParser(UserSettingsManager.UserSettings.Settings.RegexPatterns,true,logger);
             return Task.CompletedTask;
         }
 

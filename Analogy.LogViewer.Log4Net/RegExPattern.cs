@@ -1,25 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Analogy.LogViewer.Log4Net
 {
     [Serializable]
-    public class RegExPattern
+    public class RegexPattern
     {
         public string Pattern { get; set; }
         public string DateTimeFormat { get; set; }
+        public string GuidFormat { get; set; }
         public bool IsSet => !string.IsNullOrEmpty(Pattern) && !string.IsNullOrEmpty(DateTimeFormat);
-        public RegExPattern()
+        public RegexPattern()
         {
             Pattern = string.Empty;
             DateTimeFormat = "yyyy-MM-dd HH:mm:ss,fff";
+            GuidFormat = string.Empty;
 
         }
-        public RegExPattern(string pattern, string dateTimeFormat)
+        public RegexPattern(string pattern, string dateTimeFormat, string guidFormat)
         {
             Pattern = pattern;
             DateTimeFormat = dateTimeFormat;
+            GuidFormat = guidFormat;
         }
     }
 }
+
