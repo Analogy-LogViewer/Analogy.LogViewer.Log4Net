@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Analogy.DataProviders.Extensions;
+﻿using Analogy.DataProviders.Extensions;
 using Analogy.LogViewer.Log4Net.Managers;
 using Analogy.LogViewer.Log4Net.Properties;
+using System;
+using System.Drawing;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Analogy.LogViewer.Log4Net.IAnalogy
 {
-    public class Log4NetDataProviderSettingss : IAnalogyDataProviderSettings
+    public class Log4NetDataProviderSettings : IAnalogyDataProviderSettings
     {
         public string Title { get; } = "Log4Net settings";
         public UserControl DataProviderSettings { get; } = new UserSetttingsUC();

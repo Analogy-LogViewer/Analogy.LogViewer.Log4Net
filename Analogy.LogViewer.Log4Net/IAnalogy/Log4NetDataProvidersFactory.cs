@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Text;
-using Analogy.Interfaces;
+﻿using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
+using System;
+using System.Collections.Generic;
 
 namespace Analogy.LogViewer.Log4Net
 {
@@ -15,12 +13,5 @@ namespace Analogy.LogViewer.Log4Net
             {
                 new OfflineDataProvider()
             };
-        public bool UseCustomColors { get; set; } = false;
-        public IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders()
-            => Array.Empty<(string, string)>();
-
-        public (Color backgroundColor, Color foregroundColor) GetColorForMessage(IAnalogyLogMessage logMessage)
-            => (Color.Empty, Color.Empty);
-  
     }
 }
