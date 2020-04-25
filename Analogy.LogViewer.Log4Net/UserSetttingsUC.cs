@@ -43,7 +43,7 @@ namespace Analogy.LogViewer.Log4Net
             txtLogsLocation.Text = Settings.LogsLocation;
             txtbOpenFileFilters.Text = Settings.FileOpenDialogFilters;
             txtbSupportedFiles.Text = string.Join(";", Settings.SupportFormats.ToList());
-            txtbRegEx.Text = string.Join(";", Settings.RegexPatterns.Select(r => r.Pattern));
+            lstbRegularExpressions.Items.AddRange(Settings.RegexPatterns.ToArray());
             txtbDateTimeFormat.Text = Settings.RegexPatterns.First().DateTimeFormat;
         }
 
@@ -52,7 +52,8 @@ namespace Analogy.LogViewer.Log4Net
             Settings.LogsLocation = txtLogsLocation.Text;
             Settings.FileOpenDialogFilters = txtbOpenFileFilters.Text;
             Settings.SupportFormats = txtbSupportedFiles.Text.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            Settings.RegexPatterns = txtbRegEx.Text.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries).Select(s => new RegexPattern(s, txtbDateTimeFormat.Text, "")).ToList();
+            Settings.RegexPatterns = lstbRegularExpressions.Items.Cast<RegexPattern>().ToList();
+
         }
 
         private void btnTest_Click(object sender, EventArgs e)
@@ -75,6 +76,21 @@ namespace Analogy.LogViewer.Log4Net
         private void btnSave_Click(object sender, EventArgs e)
         {
             SaveSettings();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtbRegEx.Text)) return;
+            var rp = new RegexPattern(txtbRegEx.Text, txtbDateTimeFormat.Text, txtbGuidFormat.Text);
+            lstbRegularExpressions.Items.Add(rp);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (lstbRegularExpressions.SelectedItem is RegexPattern regexPattern)
+            {
+                lstbRegularExpressions.Items.Remove(lstbRegularExpressions.SelectedItem);
+            }
         }
     }
 }

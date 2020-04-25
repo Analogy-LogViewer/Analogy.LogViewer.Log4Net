@@ -22,6 +22,8 @@ namespace Analogy.LogViewer.Log4Net
             DateTimeFormat = dateTimeFormat;
             GuidFormat = guidFormat;
         }
+
+        public override string ToString() => $"Pattern: {Pattern}, DateTimeFormat: {DateTimeFormat}, GuidFormat: {GuidFormat}";
     }
 }
 
