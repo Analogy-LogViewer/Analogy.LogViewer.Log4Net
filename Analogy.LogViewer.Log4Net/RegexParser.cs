@@ -351,50 +351,64 @@ namespace Analogy.LogViewer.Log4Net
             ILogMessageCreatedHandler messagesHandler)
         {
             _messages.Clear();
-            using (StreamReader reader = File.OpenText(fileName))
+            try
             {
-                string line;
-                while ((line = await reader.ReadLineAsync()) != null)
+                using (FileStream logFileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {
-                    AnalogyLogMessage entry = null;
-                    foreach (var logPattern in LogPatterns)
+                    using (StreamReader reader = new StreamReader(logFileStream))
                     {
-                        if (TryParse(line, logPattern, out entry))
+                        string line;
+                        while ((line = await reader.ReadLineAsync()) != null)
                         {
-                            break;
-                        }
-                    }
+                            AnalogyLogMessage entry = null;
+                            foreach (var logPattern in LogPatterns)
+                            {
+                                if (TryParse(line, logPattern, out entry))
+                                {
+                                    break;
+                                }
+                            }
 
-                    if (entry != null)
-                    {
-                        if (updateUIAfterEachParsedLine)
-                            messagesHandler.AppendMessage(entry, fileName);
-                        _current = entry;
-                        _messages.Add(_current);
-                    }
-                    else
-                    {
-                        if (_current == null)
-                        {
-                            _current = new AnalogyLogMessage { Text = line };
-                        }
-                        else
-                        {
-                            _current.Text += Environment.NewLine + line;
-                        }
-                    }
+                            if (entry != null)
+                            {
+                                if (updateUIAfterEachParsedLine)
+                                    messagesHandler.AppendMessage(entry, fileName);
+                                _current = entry;
+                                _messages.Add(_current);
+                            }
+                            else
+                            {
+                                if (_current == null)
+                                {
+                                    _current = new AnalogyLogMessage { Text = line };
+                                }
+                                else
+                                {
+                                    _current.Text += Environment.NewLine + line;
+                                }
+                            }
 
-                    if (token.IsCancellationRequested)
-                    {
-                        messagesHandler.AppendMessages(_messages, fileName);
-                        return _messages;
+                            if (token.IsCancellationRequested)
+                            {
+                                messagesHandler.AppendMessages(_messages, fileName);
+                                return _messages;
+                            }
+                        }
                     }
                 }
-            }
 
-            if (!updateUIAfterEachParsedLine) //update only at the end
+                if (!updateUIAfterEachParsedLine) //update only at the end
+                    messagesHandler.AppendMessages(_messages, fileName);
+                return _messages;
+            }
+            catch (Exception e)
+            {
+                Logger.LogException(e, nameof(ParseLog), $"Error reading file: {e.Message}");
+                AnalogyLogMessage error = new AnalogyLogMessage($"Error reading file: {e.Message}", AnalogyLogLevel.Critical, AnalogyLogClass.General, "Analogy", "Analogy");
                 messagesHandler.AppendMessages(_messages, fileName);
-            return _messages;
+                _messages.Add(error);
+                return _messages;
+            }
         }
 
     }
