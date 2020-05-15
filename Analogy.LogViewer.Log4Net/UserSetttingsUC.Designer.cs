@@ -51,6 +51,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtbGuidFormat = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnTestFilter = new System.Windows.Forms.Button();
             this.gbresult.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -283,6 +284,17 @@
             this.label1.Text = "Guid Format (The format parameter can be \"N\", \"D\", \"B\", \"P\", or \"X\". If format is" +
     " null or an empty string (\"\"), \"D\" is used):";
             // 
+            // btnTestFilter
+            // 
+            this.btnTestFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTestFilter.Location = new System.Drawing.Point(840, 35);
+            this.btnTestFilter.Name = "btnTestFilter";
+            this.btnTestFilter.Size = new System.Drawing.Size(47, 25);
+            this.btnTestFilter.TabIndex = 28;
+            this.btnTestFilter.Text = "Test";
+            this.btnTestFilter.UseVisualStyleBackColor = true;
+            this.btnTestFilter.Click += new System.EventHandler(this.btnTestFilter_Click);
+            // 
             // UserSetttingsUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
@@ -305,6 +317,7 @@
             this.Controls.Add(this.txtbOpenFileFilters);
             this.Controls.Add(this.lblOpenfilesFilters);
             this.Controls.Add(this.btnTest);
+            this.Controls.Add(this.btnTestFilter);
             this.Controls.Add(this.btnBrowser);
             this.Controls.Add(this.txtLogsLocation);
             this.Controls.Add(this.lblPath);
@@ -343,5 +356,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txtbGuidFormat;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnTestFilter;
     }
 }

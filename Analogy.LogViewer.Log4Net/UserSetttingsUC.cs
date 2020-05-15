@@ -12,6 +12,7 @@ namespace Analogy.LogViewer.Log4Net
     {
 
         private UserSettings Settings => UserSettingsManager.UserSettings.Settings;
+
         public UserSetttingsUC()
         {
             InitializeComponent();
@@ -43,15 +44,16 @@ namespace Analogy.LogViewer.Log4Net
             txtLogsLocation.Text = Settings.LogsLocation;
             txtbOpenFileFilters.Text = Settings.FileOpenDialogFilters;
             txtbSupportedFiles.Text = string.Join(";", Settings.SupportFormats.ToList());
-            lstbRegularExpressions.Items.AddRange(Settings.RegexPatterns.ToArray());
-            txtbDateTimeFormat.Text = Settings.RegexPatterns.First().DateTimeFormat;
+            if (Settings.RegexPatterns.Any())
+                lstbRegularExpressions.Items.AddRange(Settings.RegexPatterns.ToArray());
         }
 
         private void SaveSettings()
         {
             Settings.LogsLocation = txtLogsLocation.Text;
             Settings.FileOpenDialogFilters = txtbOpenFileFilters.Text;
-            Settings.SupportFormats = txtbSupportedFiles.Text.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            Settings.SupportFormats = txtbSupportedFiles.Text.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
+                .ToList();
             Settings.RegexPatterns = lstbRegularExpressions.Items.Cast<RegexPattern>().ToList();
 
         }
@@ -91,6 +93,26 @@ namespace Analogy.LogViewer.Log4Net
             {
                 lstbRegularExpressions.Items.Remove(lstbRegularExpressions.SelectedItem);
             }
+        }
+
+        private void btnTestFilter_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog1 = new OpenFileDialog
+                {
+                    Filter = txtbOpenFileFilters.Text,
+                    Title = @"Test Open Files",
+                    Multiselect = true
+                };
+                openFileDialog1.ShowDialog(this);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show($"Incorrect filter: {exception.Message}", "Invalid filter text", MessageBoxButtons.OK);
+            }
+
+
         }
     }
 }

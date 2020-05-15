@@ -18,6 +18,7 @@
     <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
     <Platforms>AnyCPU;x86</Platforms>
     <Company>Analogy.LogViewer</Company>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
