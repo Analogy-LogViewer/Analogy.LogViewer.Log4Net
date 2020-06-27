@@ -86,11 +86,11 @@ namespace Analogy.LogViewer.Log4Net
                                 }
 
                                 continue;
-                            case AnalogyLogMessagePropertyName.ID:
+                            case AnalogyLogMessagePropertyName.Id:
                                 if (!string.IsNullOrEmpty(value) &&
                                     Guid.TryParseExact(value, regex.GuidFormat, out var guidValue))
                                 {
-                                    m.ID = guidValue;
+                                    m.Id = guidValue;
                                 }
 
                                 continue;
@@ -123,19 +123,19 @@ namespace Analogy.LogViewer.Log4Net
                                 }
 
                                 continue;
-                            case AnalogyLogMessagePropertyName.ProcessID:
+                            case AnalogyLogMessagePropertyName.ProcessId:
                                 if (!string.IsNullOrEmpty(value) &&
                                     int.TryParse(value, out var processNum))
                                 {
-                                    m.ProcessID = processNum;
+                                    m.ProcessId = processNum;
                                 }
 
                                 continue;
-                            case AnalogyLogMessagePropertyName.Thread:
+                            case AnalogyLogMessagePropertyName.ThreadId:
                                 if (!string.IsNullOrEmpty(value) &&
                                     int.TryParse(value, out var threadNum))
                                 {
-                                    m.Thread = threadNum;
+                                    m.ThreadId = threadNum;
                                 }
 
                                 continue;
@@ -234,7 +234,7 @@ namespace Analogy.LogViewer.Log4Net
                                 if (!string.IsNullOrEmpty(value) &&
                                     Guid.TryParseExact(value, regex.GuidFormat, out var guidValue))
                                 {
-                                    m.ID = guidValue;
+                                    m.Id = guidValue;
                                 }
 
                                 break;
@@ -271,7 +271,7 @@ namespace Analogy.LogViewer.Log4Net
                                 if (!string.IsNullOrEmpty(value) &&
                                     int.TryParse(value, out var processNum))
                                 {
-                                    m.ProcessID = processNum;
+                                    m.ProcessId = processNum;
                                 }
 
                                 break;
@@ -279,7 +279,7 @@ namespace Analogy.LogViewer.Log4Net
                                 if (!string.IsNullOrEmpty(value) &&
                                     int.TryParse(value, out var threadNum))
                                 {
-                                    m.Thread = threadNum;
+                                    m.ThreadId = threadNum;
                                 }
 
                                 break;
