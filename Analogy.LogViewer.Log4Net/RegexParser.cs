@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Analogy.LogViewer.Log4Net
 {
-    public class RegexParser
+    public class RegExParser
     {
         private AnalogyLogMessage _current;
         private RegexPattern _lastUsedPattern;
@@ -39,7 +39,7 @@ namespace Analogy.LogViewer.Log4Net
         public static IEnumerable<string> RegexMembers { get; }
         private static Dictionary<string, AnalogyLogMessagePropertyName> regexMapper;
 
-        static RegexParser()
+        static RegExParser()
         {
             var names = Enum.GetNames(typeof(AnalogyLogMessagePropertyName));
             RegexMembers = names;
@@ -51,7 +51,7 @@ namespace Analogy.LogViewer.Log4Net
             }
         }
 
-        public RegexParser(List<RegexPattern> logPatterns, bool updateUIAfterEachLine, IAnalogyLogger logger)
+        public RegExParser(List<RegexPattern> logPatterns, bool updateUIAfterEachLine, IAnalogyLogger logger)
         {
             _logPatterns = logPatterns;
             Logger = logger;
@@ -197,9 +197,9 @@ namespace Analogy.LogViewer.Log4Net
             catch (Exception e)
             {
                 string error = $"Error parsing line: {e.Message}";
-                Logger?.LogException(e, nameof(RegexParser), error);
+                Logger?.LogException(e, nameof(RegExParser), error);
                 message = new AnalogyLogMessage(error, AnalogyLogLevel.Error, AnalogyLogClass.General,
-                    nameof(RegexParser));
+                    nameof(RegExParser));
                 return false;
             }
         }
@@ -342,7 +342,7 @@ namespace Analogy.LogViewer.Log4Net
             {
                 string error = $"Error parsing line: {e.Message}";
                 message = new AnalogyLogMessage(error, AnalogyLogLevel.Error, AnalogyLogClass.General,
-                    nameof(RegexParser));
+                    nameof(RegExParser));
                 return false;
             }
         }

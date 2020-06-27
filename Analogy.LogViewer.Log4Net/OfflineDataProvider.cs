@@ -22,7 +22,7 @@ namespace Analogy.LogViewer.Log4Net
         public IEnumerable<string> SupportFormats => UserSettingsManager.UserSettings.Settings.SupportFormats;
         public string InitialFolderFullPath { get; } = Environment.CurrentDirectory;
         public bool DisableFilePoolingOption { get; } = false;
-        private RegexParser Parser { get; set; }
+        private RegExParser Parser { get; set; }
         public IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders()
             => Array.Empty<(string, string)>();
 
@@ -82,7 +82,7 @@ namespace Analogy.LogViewer.Log4Net
         public Task InitializeDataProviderAsync(IAnalogyLogger logger)
         {
             LogManager.Instance.SetLogger(logger);
-            Parser=new RegexParser(UserSettingsManager.UserSettings.Settings.RegexPatterns,true,logger);
+            Parser=new RegExParser(UserSettingsManager.UserSettings.Settings.RegexPatterns,true,logger);
             return Task.CompletedTask;
         }
 
