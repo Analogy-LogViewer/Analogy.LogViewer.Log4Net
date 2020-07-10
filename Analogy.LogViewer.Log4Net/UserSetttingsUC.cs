@@ -61,7 +61,7 @@ namespace Analogy.LogViewer.Log4Net
         private void btnTest_Click(object sender, EventArgs e)
         {
             RegexPattern p = new RegexPattern(txtbRegEx.Text, txtbDateTimeFormat.Text, "");
-            bool valid = RegExParser.CheckRegex(txtbTest.Text, p, out AnalogyLogMessage m);
+            bool valid = RegexParser.CheckRegex(txtbTest.Text, p, out AnalogyLogMessage m);
             if (valid)
             {
                 lblResult.Text = "Valid Regular Expression";

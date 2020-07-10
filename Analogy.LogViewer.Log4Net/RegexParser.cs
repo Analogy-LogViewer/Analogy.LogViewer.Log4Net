@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Analogy.LogViewer.Log4Net
 {
-    public class RegExParser
+    public class RegexParser
     {
         private AnalogyLogMessage _current;
         private RegexPattern _lastUsedPattern;
@@ -39,7 +39,7 @@ namespace Analogy.LogViewer.Log4Net
         public static IEnumerable<string> RegexMembers { get; }
         private static Dictionary<string, AnalogyLogMessagePropertyName> regexMapper;
 
-        static RegExParser()
+        static RegexParser()
         {
             var names = Enum.GetNames(typeof(AnalogyLogMessagePropertyName));
             RegexMembers = names;
@@ -51,7 +51,7 @@ namespace Analogy.LogViewer.Log4Net
             }
         }
 
-        public RegExParser(List<RegexPattern> logPatterns, bool updateUIAfterEachLine, IAnalogyLogger logger)
+        public RegexParser(List<RegexPattern> logPatterns, bool updateUIAfterEachLine, IAnalogyLogger logger)
         {
             _logPatterns = logPatterns;
             Logger = logger;
@@ -197,9 +197,9 @@ namespace Analogy.LogViewer.Log4Net
             catch (Exception e)
             {
                 string error = $"Error parsing line: {e.Message}";
-                Logger?.LogException(e, nameof(RegExParser), error);
+                Logger?.LogException(e, nameof(RegexParser), error);
                 message = new AnalogyLogMessage(error, AnalogyLogLevel.Error, AnalogyLogClass.General,
-                    nameof(RegExParser));
+                    nameof(RegexParser));
                 return false;
             }
         }
@@ -230,7 +230,7 @@ namespace Analogy.LogViewer.Log4Net
                                 }
 
                                 break;
-                            case AnalogyLogMessagePropertyName.ID:
+                            case AnalogyLogMessagePropertyName.Id:
                                 if (!string.IsNullOrEmpty(value) &&
                                     Guid.TryParseExact(value, regex.GuidFormat, out var guidValue))
                                 {
@@ -267,7 +267,7 @@ namespace Analogy.LogViewer.Log4Net
                                 }
 
                                 break;
-                            case AnalogyLogMessagePropertyName.ProcessID:
+                            case AnalogyLogMessagePropertyName.ProcessId:
                                 if (!string.IsNullOrEmpty(value) &&
                                     int.TryParse(value, out var processNum))
                                 {
@@ -275,7 +275,7 @@ namespace Analogy.LogViewer.Log4Net
                                 }
 
                                 break;
-                            case AnalogyLogMessagePropertyName.Thread:
+                            case AnalogyLogMessagePropertyName.ThreadId:
                                 if (!string.IsNullOrEmpty(value) &&
                                     int.TryParse(value, out var threadNum))
                                 {
@@ -342,7 +342,7 @@ namespace Analogy.LogViewer.Log4Net
             {
                 string error = $"Error parsing line: {e.Message}";
                 message = new AnalogyLogMessage(error, AnalogyLogLevel.Error, AnalogyLogClass.General,
-                    nameof(RegExParser));
+                    nameof(RegexParser));
                 return false;
             }
         }
