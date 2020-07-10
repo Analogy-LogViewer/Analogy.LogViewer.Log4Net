@@ -15,10 +15,11 @@
     <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.Log4Net</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>Analogy.Log4Net.png</PackageIcon>
-    <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+    <PackageReleaseNotes>Log4Net parser for Analogy Log Viewer</PackageReleaseNotes>
     <Platforms>AnyCPU;x86</Platforms>
     <Company>Analogy.LogViewer</Company>
     <Version>1.0.4</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
