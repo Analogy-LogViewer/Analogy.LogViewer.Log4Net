@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFrameworks>net472;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net471;net472;netcoreapp3.1</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
@@ -18,12 +18,13 @@
     <PackageReleaseNotes>Log4Net parser for Analogy Log Viewer</PackageReleaseNotes>
     <Platforms>AnyCPU;x86</Platforms>
     <Company>Analogy.LogViewer</Company>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>1.0.5.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Analogy.DataProviders.Extensions" Version="1.1.6" />
+    <PackageReference Include="Analogy.DataProviders.Extensions" Version="1.1.7" />
     <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.3.1" />
     <PackageReference Include="Microsoft.Build.Tasks.Git" Version="1.0.0">
       <PrivateAssets>all</PrivateAssets>
