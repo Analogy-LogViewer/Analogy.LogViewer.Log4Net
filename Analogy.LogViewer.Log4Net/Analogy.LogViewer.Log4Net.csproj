@@ -1,62 +1,64 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
-  <PropertyGroup>
-    <OutputType>Library</OutputType>
-    <TargetFrameworks>net471;net472;netcoreapp3.1</TargetFrameworks>
-    <UseWindowsForms>true</UseWindowsForms>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <Authors>Lior Banai</Authors>
-    <Description>Log4Net Log parser for Analogy Log Viewer</Description>
-    <Copyright>Copyright @ Lior Banai 2020</Copyright>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.Log4Net</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.Log4Net</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageIcon>Analogy.Log4Net.png</PackageIcon>
-    <PackageReleaseNotes>Log4Net parser for Analogy Log Viewer</PackageReleaseNotes>
-    <Platforms>AnyCPU;x86</Platforms>
-    <Company>Analogy.LogViewer</Company>
-    <Version>1.0.5</Version>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.5.0</AssemblyVersion>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFrameworks>net471;net472;netcoreapp3.1</TargetFrameworks>
+		<UseWindowsForms>true</UseWindowsForms>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<Authors>Lior Banai</Authors>
+		<Description>Log4Net Log parser for Analogy Log Viewer</Description>
+		<Copyright>Copyright @ Lior Banai 2020</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.Log4Net</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.Log4Net</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageIcon>Analogy.Log4Net.png</PackageIcon>
+		<PackageReleaseNotes>Log4Net parser for Analogy Log Viewer</PackageReleaseNotes>
+		<Platforms>AnyCPU;x86</Platforms>
+		<Company>Analogy.LogViewer</Company>
+		<Version>1.0.5.1</Version>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<AssemblyVersion>1.0.5.1</AssemblyVersion>
+		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Analogy.DataProviders.Extensions" Version="1.1.7" />
-    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.3.1" />
-    <PackageReference Include="Microsoft.Build.Tasks.Git" Version="1.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Analogy.DataProviders.Extensions" Version="1.1.7" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.3.1" />
+		<PackageReference Include="Microsoft.Build.Tasks.Git" Version="1.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+		<PackageReference Include="System.Resources.Extensions" Version="4.6.0"/>
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\Assets\Analogy.Log4Net.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\Assets\Analogy.Log4Net.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Update="Properties\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Properties\Resources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
 
 </Project>
