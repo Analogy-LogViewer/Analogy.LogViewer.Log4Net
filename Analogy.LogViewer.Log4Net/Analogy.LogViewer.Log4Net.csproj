@@ -9,7 +9,7 @@
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<Authors>Lior Banai</Authors>
 		<Description>Log4Net Log parser for Analogy Log Viewer</Description>
-		<Copyright>Copyright @ Lior Banai 2020</Copyright>
+		<Copyright>Lior Banai @ 2020</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.Log4Net</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.Log4Net</RepositoryUrl>
@@ -18,14 +18,14 @@
 		<PackageReleaseNotes>Log4Net parser for Analogy Log Viewer</PackageReleaseNotes>
 		<Platforms>AnyCPU;x86</Platforms>
 		<Company>Analogy.LogViewer</Company>
-		<Version>1.0.5.2</Version>
+		<Version>1.0.6</Version>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<AssemblyVersion>1.0.5.2</AssemblyVersion>
+		<AssemblyVersion>1.0.6.0</AssemblyVersion>
 		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.3.2.6" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.4.3" />
 		<PackageReference Include="Microsoft.Build.Tasks.Git" Version="1.0.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
