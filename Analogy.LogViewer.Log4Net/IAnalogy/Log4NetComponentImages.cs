@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Analogy.DataProviders.Extensions;
+using Analogy.Interfaces;
 using Analogy.LogViewer.Log4Net.Properties;
 
 namespace Analogy.LogViewer.Log4Net.IAnalogy

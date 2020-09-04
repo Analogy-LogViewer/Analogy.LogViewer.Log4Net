@@ -13,14 +13,18 @@ namespace Analogy.LogViewer.Log4Net
 {
     public class OfflineDataProvider : IAnalogyOfflineDataProvider
     {
-        public Guid ID { get; } = new Guid("E1696270-97BE-489F-9440-453BEA1AB7B8");
-        public string OptionalTitle { get; } = string.Empty;
+        public Guid Id { get; set; } = new Guid("E1696270-97BE-489F-9440-453BEA1AB7B8");
+        public string OptionalTitle { get; set; } = string.Empty;
         public bool UseCustomColors { get; set; } = false;
         public bool CanSaveToLogFile { get; } = false;
         public string FileOpenDialogFilters => UserSettingsManager.UserSettings.Settings.FileOpenDialogFilters;
         public string FileSaveDialogFilters { get; } = string.Empty;
         public IEnumerable<string> SupportFormats => UserSettingsManager.UserSettings.Settings.SupportFormats;
         public string InitialFolderFullPath { get; } = Environment.CurrentDirectory;
+        public Image SmallImage { get; set; }
+        public Image LargeImage { get; set; }
+
+
         public bool DisableFilePoolingOption { get; } = false;
         private RegexParser Parser { get; set; }
         public IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders()
@@ -31,7 +35,7 @@ namespace Analogy.LogViewer.Log4Net
         public async Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token,
             ILogMessageCreatedHandler messagesHandler)
         {
-            
+
             List<AnalogyLogMessage> messages = await Parser.ParseLog(fileName, token, messagesHandler);
             return messages;
         }
@@ -50,9 +54,8 @@ namespace Analogy.LogViewer.Log4Net
             }
             return false;
         }
-   
-        public bool CanOpenAllFiles(IEnumerable<string> fileNames) => fileNames.All(CanOpenFile);
 
+        public bool CanOpenAllFiles(IEnumerable<string> fileNames) => fileNames.All(CanOpenFile);
 
         public static List<FileInfo> GetSupportedFilesInternal(DirectoryInfo dirInfo, bool recursive)
         {
@@ -82,7 +85,7 @@ namespace Analogy.LogViewer.Log4Net
         public Task InitializeDataProviderAsync(IAnalogyLogger logger)
         {
             LogManager.Instance.SetLogger(logger);
-            Parser=new RegexParser(UserSettingsManager.UserSettings.Settings.RegexPatterns,true,logger);
+            Parser = new RegexParser(UserSettingsManager.UserSettings.Settings.RegexPatterns, true, logger);
             return Task.CompletedTask;
         }
 
