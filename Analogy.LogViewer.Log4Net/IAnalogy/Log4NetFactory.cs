@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
+using Analogy.LogViewer.Log4Net.Properties;
 
 namespace Analogy.LogViewer.Log4Net
 {
@@ -13,6 +15,10 @@ namespace Analogy.LogViewer.Log4Net
         public IEnumerable<IAnalogyChangeLog> ChangeLog { get; set; } = ChangeLogList.GetChangeLog();
         public IEnumerable<string> Contributors { get; set; } = new List<string> { "Lior Banai" };
         public string About { get; set; } = "Log4Net Parser for Analogy Log Viewer";
+        public Image SmallImage { get; set; } = Resources.log4net16x16;
+        public Image LargeImage { get; set; } = Resources.log4net32x32;
+
+
 
     }
 }
