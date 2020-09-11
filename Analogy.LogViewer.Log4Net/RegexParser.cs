@@ -143,7 +143,7 @@ namespace Analogy.LogViewer.Log4Net
                                 switch (value)
                                 {
                                     case "OFF":
-                                        m.Level = AnalogyLogLevel.Disabled;
+                                        m.Level = AnalogyLogLevel.None;
                                         break;
                                     case "TRACE":
                                         m.Level = AnalogyLogLevel.Trace;
@@ -152,7 +152,7 @@ namespace Analogy.LogViewer.Log4Net
                                         m.Level = AnalogyLogLevel.Debug;
                                         break;
                                     case "INFO":
-                                        m.Level = AnalogyLogLevel.Event;
+                                        m.Level = AnalogyLogLevel.Information;
                                         break;
                                     case "WARN":
                                         m.Level = AnalogyLogLevel.Warning;
@@ -197,7 +197,7 @@ namespace Analogy.LogViewer.Log4Net
             catch (Exception e)
             {
                 string error = $"Error parsing line: {e.Message}";
-                Logger?.LogException(e, nameof(RegexParser), error);
+                Logger?.LogException(error,e, nameof(RegexParser));
                 message = new AnalogyLogMessage(error, AnalogyLogLevel.Error, AnalogyLogClass.General,
                     nameof(RegexParser));
                 return false;
@@ -287,7 +287,7 @@ namespace Analogy.LogViewer.Log4Net
                                 switch (value)
                                 {
                                     case "OFF":
-                                        m.Level = AnalogyLogLevel.Disabled;
+                                        m.Level = AnalogyLogLevel.None;
                                         break;
                                     case "TRACE":
                                         m.Level = AnalogyLogLevel.Trace;
@@ -296,7 +296,7 @@ namespace Analogy.LogViewer.Log4Net
                                         m.Level = AnalogyLogLevel.Debug;
                                         break;
                                     case "INFO":
-                                        m.Level = AnalogyLogLevel.Event;
+                                        m.Level = AnalogyLogLevel.Information;
                                         break;
                                     case "WARN":
                                         m.Level = AnalogyLogLevel.Warning;
@@ -403,7 +403,7 @@ namespace Analogy.LogViewer.Log4Net
             }
             catch (Exception e)
             {
-                Logger.LogException(e, nameof(ParseLog), $"Error reading file: {e.Message}");
+                Logger.LogException($"Error reading file: {e.Message}",e, nameof(ParseLog));
                 AnalogyLogMessage error = new AnalogyLogMessage($"Error reading file: {e.Message}", AnalogyLogLevel.Critical, AnalogyLogClass.General, "Analogy", "Analogy");
                 messagesHandler.AppendMessages(_messages, fileName);
                 _messages.Add(error);
