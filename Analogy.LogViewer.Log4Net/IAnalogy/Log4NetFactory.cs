@@ -10,6 +10,11 @@ namespace Analogy.LogViewer.Log4Net
     public class Log4NetFactory : IAnalogyFactory
     {
         internal static Guid Log4NetFactoryId = new Guid("DBC17C75-5212-46E3-B98A-539E779000E3");
+        public void RegisterNotificationCallback(INotificationReporter notificationReporter)
+        {
+            
+        }
+
         public Guid FactoryId { get; set; } = Log4NetFactoryId;
         public string Title { get; set; } = "Log4Net Parser";
         public IEnumerable<IAnalogyChangeLog> ChangeLog { get; set; } = ChangeLogList.GetChangeLog();
