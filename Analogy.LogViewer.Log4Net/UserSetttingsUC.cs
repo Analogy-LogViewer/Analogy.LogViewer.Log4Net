@@ -45,7 +45,9 @@ namespace Analogy.LogViewer.Log4Net
             txtbOpenFileFilters.Text = Settings.FileOpenDialogFilters;
             txtbSupportedFiles.Text = string.Join(";", Settings.SupportFormats.ToList());
             if (Settings.RegexPatterns.Any())
+            {
                 lstbRegularExpressions.Items.AddRange(Settings.RegexPatterns.ToArray());
+            }
         }
 
         private void SaveSettings()
@@ -82,7 +84,11 @@ namespace Analogy.LogViewer.Log4Net
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtbRegEx.Text)) return;
+            if (string.IsNullOrEmpty(txtbRegEx.Text))
+            {
+                return;
+            }
+
             var rp = new RegexPattern(txtbRegEx.Text, txtbDateTimeFormat.Text, txtbGuidFormat.Text);
             lstbRegularExpressions.Items.Add(rp);
         }

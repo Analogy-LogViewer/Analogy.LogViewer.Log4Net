@@ -24,12 +24,19 @@ namespace Analogy.LogViewer.Log4Net
             get
             {
                 if (_lastUsedPattern != null)
+                {
                     yield return _lastUsedPattern;
+                }
+
                 var oldLastUsedPattern = _lastUsedPattern;
                 foreach (var logPattern in _logPatterns)
                 {
                     //skip last used pattern (returned first)
-                    if (oldLastUsedPattern == logPattern) continue;
+                    if (oldLastUsedPattern == logPattern)
+                    {
+                        continue;
+                    }
+
                     _lastUsedPattern = logPattern;
                     yield return _lastUsedPattern;
                 }
@@ -171,7 +178,9 @@ namespace Analogy.LogViewer.Log4Net
                                 continue;
                             case AnalogyLogMessagePropertyName.Class:
                                 if (string.IsNullOrEmpty(value))
+                                {
                                     m.Class = AnalogyLogClass.General;
+                                }
                                 else
                                 {
                                     m.Class = Enum.TryParse(value, true, out AnalogyLogClass cls) &&
@@ -315,7 +324,9 @@ namespace Analogy.LogViewer.Log4Net
                                 break;
                             case AnalogyLogMessagePropertyName.Class:
                                 if (string.IsNullOrEmpty(value))
+                                {
                                     m.Class = AnalogyLogClass.General;
+                                }
                                 else
                                 {
                                     m.Class = Enum.TryParse(value, true, out AnalogyLogClass cls) &&
@@ -372,7 +383,10 @@ namespace Analogy.LogViewer.Log4Net
                             if (entry != null)
                             {
                                 if (updateUIAfterEachParsedLine)
+                                {
                                     messagesHandler.AppendMessage(entry, fileName);
+                                }
+
                                 _current = entry;
                                 _messages.Add(_current);
                             }
@@ -398,7 +412,10 @@ namespace Analogy.LogViewer.Log4Net
                 }
 
                 if (!updateUIAfterEachParsedLine) //update only at the end
+                {
                     messagesHandler.AppendMessages(_messages, fileName);
+                }
+
                 return _messages;
             }
             catch (Exception e)

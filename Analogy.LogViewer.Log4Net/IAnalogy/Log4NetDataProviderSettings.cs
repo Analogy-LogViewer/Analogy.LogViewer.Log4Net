@@ -8,16 +8,16 @@ using Analogy.Interfaces;
 
 namespace Analogy.LogViewer.Log4Net.IAnalogy
 {
-    public class Log4NetDataProviderSettings : IAnalogyDataProviderSettings
+    public class Log4NetDataProviderSettings : Template.UserSettingsFactory
     {
-        public string Title { get; set; } = "Log4Net settings";
-        public UserControl DataProviderSettings { get; } = new UserSetttingsUC();
-        public Image SmallImage { get; set; } = Resources.log4net16x16;
-        public Image LargeImage { get; set; } = Resources.log4net32x32;
-        public Guid FactoryId { get; set; } = Log4NetFactory.Log4NetFactoryId;
-        public Guid Id { get; set; } = new Guid("2D09F7E7-C55E-41B0-8068-A474D2361F85");
+        public override string Title { get; set; } = "Log4Net settings";
+        public override UserControl DataProviderSettings { get; set; } = new UserSetttingsUC();
+        public override Image? SmallImage { get; set; } = Resources.log4net16x16;
+        public override Image? LargeImage { get; set; } = Resources.log4net32x32;
+        public override Guid FactoryId { get; set; } = Log4NetFactory.Log4NetFactoryId;
+        public override Guid Id { get; set; } = new Guid("2D09F7E7-C55E-41B0-8068-A474D2361F85");
 
-        public Task SaveSettingsAsync()
+        public override Task SaveSettingsAsync()
         {
             UserSettingsManager.UserSettings.Save();
             return Task.CompletedTask;
