@@ -337,8 +337,6 @@ namespace Analogy.LogViewer.Log4Net
                                 }
 
                                 break;
-                            default:
-                                throw new ArgumentOutOfRangeException();
                         }
                     }
 
