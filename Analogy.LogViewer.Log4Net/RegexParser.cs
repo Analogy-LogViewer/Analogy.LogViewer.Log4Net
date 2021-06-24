@@ -15,7 +15,7 @@ namespace Analogy.LogViewer.Log4Net
         private AnalogyLogMessage _current;
         private RegexPattern _lastUsedPattern;
         private readonly List<AnalogyLogMessage> _messages = new List<AnalogyLogMessage>();
-        private readonly List<RegexPattern> _logPatterns;
+        private readonly UserSettings _settings;
         private readonly bool updateUIAfterEachParsedLine;
         private IAnalogyLogger Logger { get; }
 
@@ -29,7 +29,7 @@ namespace Analogy.LogViewer.Log4Net
                 }
 
                 var oldLastUsedPattern = _lastUsedPattern;
-                foreach (var logPattern in _logPatterns)
+                foreach (var logPattern in _settings.RegexPatterns)
                 {
                     //skip last used pattern (returned first)
                     if (oldLastUsedPattern == logPattern)
@@ -58,12 +58,11 @@ namespace Analogy.LogViewer.Log4Net
             }
         }
 
-        public RegexParser(List<RegexPattern> logPatterns, bool updateUIAfterEachLine, IAnalogyLogger logger)
+        public RegexParser(UserSettings settings, bool updateUIAfterEachLine, IAnalogyLogger logger)
         {
-            _logPatterns = logPatterns;
             Logger = logger;
+            _settings = settings;
             updateUIAfterEachParsedLine = updateUIAfterEachLine;
-
         }
 
 
@@ -415,6 +414,9 @@ namespace Analogy.LogViewer.Log4Net
                 {
                     messagesHandler.AppendMessages(_messages, fileName);
                 }
+
+                // Reset so that any settings-changes are reflected next time we run
+                _lastUsedPattern = null;
 
                 return _messages;
             }
