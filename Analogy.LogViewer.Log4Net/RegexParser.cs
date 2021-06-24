@@ -191,6 +191,15 @@ namespace Analogy.LogViewer.Log4Net
                                 }
 
                                 continue;
+                            case AnalogyLogMessagePropertyName.MachineName:
+                                m.MachineName = value;
+                                break;
+                            case AnalogyLogMessagePropertyName.RawText:
+                                m.RawText = value;
+                                break;
+                            case AnalogyLogMessagePropertyName.RawTextType:
+                                m.RawTextType = AnalogyRowTextType.PlainText;
+                                break;
                             default:
                                 throw new ArgumentOutOfRangeException();
                         }
@@ -337,6 +346,17 @@ namespace Analogy.LogViewer.Log4Net
                                 }
 
                                 break;
+                            case AnalogyLogMessagePropertyName.MachineName:
+                                m.MachineName = value;
+                                break;
+                            case AnalogyLogMessagePropertyName.RawText:
+                                m.RawText = value;
+                                break;
+                            case AnalogyLogMessagePropertyName.RawTextType:
+                                m.RawTextType = AnalogyRowTextType.PlainText;
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException(); 
                         }
                     }
 
