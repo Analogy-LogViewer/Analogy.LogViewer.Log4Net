@@ -12,8 +12,8 @@ namespace Analogy.LogViewer.Log4Net
 {
     public class RegexParser
     {
-        private AnalogyLogMessage _current;
-        private RegexPattern _lastUsedPattern;
+        private AnalogyLogMessage? _current;
+        private RegexPattern? _lastUsedPattern;
         private readonly List<AnalogyLogMessage> _messages = new List<AnalogyLogMessage>();
         private readonly List<RegexPattern> _logPatterns;
         private readonly bool updateUIAfterEachParsedLine;
