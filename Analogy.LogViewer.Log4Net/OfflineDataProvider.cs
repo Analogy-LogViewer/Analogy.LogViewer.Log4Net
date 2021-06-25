@@ -86,7 +86,7 @@ namespace Analogy.LogViewer.Log4Net
         public override Task InitializeDataProviderAsync(IAnalogyLogger logger)
         {
             LogManager.Instance.SetLogger(logger);
-            Parser = new RegexParser(UserSettingsManager.UserSettings.Settings.RegexPatterns, true, logger);
+            Parser = new RegexParser(UserSettingsManager.UserSettings.Settings, true, logger);
             return base.InitializeDataProviderAsync(logger);
         }
     }
