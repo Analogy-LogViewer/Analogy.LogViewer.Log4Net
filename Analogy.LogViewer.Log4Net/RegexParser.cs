@@ -12,8 +12,8 @@ namespace Analogy.LogViewer.Log4Net
 {
     public class RegexParser
     {
-        private AnalogyLogMessage _current;
-        private RegexPattern _lastUsedPattern;
+        private AnalogyLogMessage? _current;
+        private RegexPattern? _lastUsedPattern;
         private readonly List<AnalogyLogMessage> _messages = new List<AnalogyLogMessage>();
         private readonly List<RegexPattern> _logPatterns;
         private readonly bool updateUIAfterEachParsedLine;
@@ -191,6 +191,15 @@ namespace Analogy.LogViewer.Log4Net
                                 }
 
                                 continue;
+                            case AnalogyLogMessagePropertyName.MachineName:
+                                m.MachineName = value;
+                                break;
+                            case AnalogyLogMessagePropertyName.RawText:
+                                m.RawText = value;
+                                break;
+                            case AnalogyLogMessagePropertyName.RawTextType:
+                                m.RawTextType = AnalogyRowTextType.PlainText;
+                                break;
                             default:
                                 throw new ArgumentOutOfRangeException();
                         }
@@ -337,8 +346,17 @@ namespace Analogy.LogViewer.Log4Net
                                 }
 
                                 break;
+                            case AnalogyLogMessagePropertyName.MachineName:
+                                m.MachineName = value;
+                                break;
+                            case AnalogyLogMessagePropertyName.RawText:
+                                m.RawText = value;
+                                break;
+                            case AnalogyLogMessagePropertyName.RawTextType:
+                                m.RawTextType = AnalogyRowTextType.PlainText;
+                                break;
                             default:
-                                throw new ArgumentOutOfRangeException();
+                                throw new ArgumentOutOfRangeException(); 
                         }
                     }
 
