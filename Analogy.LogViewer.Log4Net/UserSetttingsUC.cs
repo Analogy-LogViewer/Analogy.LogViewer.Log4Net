@@ -46,6 +46,7 @@ namespace Analogy.LogViewer.Log4Net
             txtbSupportedFiles.Text = string.Join(";", Settings.SupportFormats.ToList());
             if (Settings.RegexPatterns.Any())
             {
+                lstbRegularExpressions.Items.Clear();
                 lstbRegularExpressions.Items.AddRange(Settings.RegexPatterns.ToArray());
             }
         }
