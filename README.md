@@ -2,7 +2,6 @@
 <p align="center">
 
 [![Gitter](https://badges.gitter.im/Analogy-LogViewer/community.svg)](https://gitter.im/Analogy-LogViewer/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![Build Status](https://dev.azure.com/Analogy-LogViewer/Analogy%20Log%20Viewer/_apis/build/status/Analogy-LogViewer.Analogy.LogViewer.Log4Net?branchName=master)](https://dev.azure.com/Analogy-LogViewer/Analogy%20Log%20Viewer/_build/latest?definitionId=26&branchName=master)  ![.NET Core Desktop](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Log4Net/workflows/.NET%20Core%20Desktop/badge.svg)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=Analogy-LogViewer/Analogy.LogViewer.Log4Net)](https://dependabot.com)
  <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer.Log4Net/issues">
     <img src="http://img.shields.io/github/issues/Analogy-LogViewer/Analogy.LogViewer.Log4Net" alt="Issues"/>
 </a>
