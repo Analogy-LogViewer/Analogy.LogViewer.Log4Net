@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.Interfaces.DataTypes;
 
 namespace Analogy.LogViewer.Log4Net
 {
@@ -386,6 +387,7 @@ namespace Analogy.LogViewer.Log4Net
                     using (StreamReader reader = new StreamReader(logFileStream))
                     {
                         string line;
+                        long count=0;
                         while ((line = await reader.ReadLineAsync()) != null)
                         {
                             AnalogyLogMessage entry = null;
@@ -402,6 +404,8 @@ namespace Analogy.LogViewer.Log4Net
                                 if (updateUIAfterEachParsedLine)
                                 {
                                     messagesHandler.AppendMessage(entry, fileName);
+                                    count++;
+                                    messagesHandler.ReportFileReadProgress(new AnalogyFileReadProgress(AnalogyFileReadProgressType.Incremental, 1, count, count));
                                 }
 
                                 _current = entry;
