@@ -83,11 +83,11 @@ namespace Analogy.LogViewer.Log4Net
             return files;
         }
 
-        public override Task InitializeDataProviderAsync(IAnalogyLogger logger)
+        public override Task InitializeDataProvider(IAnalogyLogger logger)
         {
             LogManager.Instance.SetLogger(logger);
             Parser = new RegexParser(UserSettingsManager.UserSettings.Settings, true, logger);
-            return base.InitializeDataProviderAsync(logger);
+            return base.InitializeDataProvider(logger);
         }
     }
 }
