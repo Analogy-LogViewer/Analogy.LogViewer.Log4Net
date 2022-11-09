@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Analogy.LogViewer.Template.Managers;
 
 namespace Analogy.LogViewer.Log4Net.Managers
 {

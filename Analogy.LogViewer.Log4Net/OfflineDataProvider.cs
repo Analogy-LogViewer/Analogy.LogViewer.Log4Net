@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.LogViewer.Template.Managers;
 
 namespace Analogy.LogViewer.Log4Net
 {
@@ -85,7 +86,6 @@ namespace Analogy.LogViewer.Log4Net
 
         public override Task InitializeDataProvider(IAnalogyLogger logger)
         {
-            LogManager.Instance.SetLogger(logger);
             Parser = new RegexParser(UserSettingsManager.UserSettings.Settings, true, logger);
             return base.InitializeDataProvider(logger);
         }
