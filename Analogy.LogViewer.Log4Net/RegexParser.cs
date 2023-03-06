@@ -15,7 +15,7 @@ namespace Analogy.LogViewer.Log4Net
     {
         private AnalogyLogMessage? _current;
         private RegexPattern? _lastUsedPattern;
-        private readonly List<AnalogyLogMessage> _messages = new List<AnalogyLogMessage>();
+        private readonly List<IAnalogyLogMessage> _messages = new List<IAnalogyLogMessage>();
         private readonly UserSettings _settings;
         private readonly bool updateUIAfterEachParsedLine;
         private IAnalogyLogger Logger { get; }
@@ -103,9 +103,6 @@ namespace Analogy.LogViewer.Log4Net
                                 continue;
                             case AnalogyLogMessagePropertyName.Text:
                                 m.Text = value;
-                                continue;
-                            case AnalogyLogMessagePropertyName.Category:
-                                m.Category = value;
                                 continue;
                             case AnalogyLogMessagePropertyName.Source:
                                 m.Source = value;
@@ -259,9 +256,6 @@ namespace Analogy.LogViewer.Log4Net
                             case AnalogyLogMessagePropertyName.Text:
                                 m.Text = value;
                                 break;
-                            case AnalogyLogMessagePropertyName.Category:
-                                m.Category = value;
-                                break;
                             case AnalogyLogMessagePropertyName.Source:
                                 m.Source = value;
                                 break;
@@ -376,7 +370,7 @@ namespace Analogy.LogViewer.Log4Net
             }
         }
 
-        public async Task<List<AnalogyLogMessage>> ParseLog(string fileName, CancellationToken token,
+        public async Task<List<IAnalogyLogMessage>> ParseLog(string fileName, CancellationToken token,
             ILogMessageCreatedHandler messagesHandler)
         {
             _messages.Clear();

@@ -32,15 +32,15 @@ namespace Analogy.LogViewer.Log4Net
 
         public override (Color backgroundColor, Color foregroundColor) GetColorForMessage(IAnalogyLogMessage logMessage)
             => (Color.Empty, Color.Empty);
-        public override async Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token,
+        public override async Task<IEnumerable<IAnalogyLogMessage>> Process(string fileName, CancellationToken token,
             ILogMessageCreatedHandler messagesHandler)
         {
 
-            List<AnalogyLogMessage> messages = await Parser.ParseLog(fileName, token, messagesHandler);
+            List<IAnalogyLogMessage> messages = await Parser.ParseLog(fileName, token, messagesHandler);
             return messages;
         }
 
-        public override Task SaveAsync(List<AnalogyLogMessage> messages, string fileName) => Task.CompletedTask;
+        public override Task SaveAsync(List<IAnalogyLogMessage> messages, string fileName) => Task.CompletedTask;
 
         public override bool CanOpenFile(string fileName)
         {
