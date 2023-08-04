@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Analogy.LogViewer.Template.Managers;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.LogViewer.Log4Net
 {
@@ -15,8 +16,8 @@ namespace Analogy.LogViewer.Log4Net
     {
         public override Guid Id { get; set; } = new Guid("E1696270-97BE-489F-9440-453BEA1AB7B8");
         public override string OptionalTitle { get; set; } = string.Empty;
-        public override bool UseCustomColors { get; set; } = false;
-        public override bool CanSaveToLogFile { get; set; } = false;
+        public override bool UseCustomColors { get; set; }
+        public override bool CanSaveToLogFile { get; set; }
         public override string FileOpenDialogFilters => UserSettingsManager.UserSettings.Settings.FileOpenDialogFilters;
         public override string FileSaveDialogFilters { get; set; } = string.Empty;
         public override IEnumerable<string> SupportFormats => UserSettingsManager.UserSettings.Settings.SupportFormats;
@@ -25,7 +26,7 @@ namespace Analogy.LogViewer.Log4Net
         public override Image? LargeImage { get; set; }
 
 
-        public override bool DisableFilePoolingOption { get; set; } = false;
+        public override bool DisableFilePoolingOption { get; set; }
         private RegexParser Parser { get; set; }
         public override IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders()
             => Array.Empty<(string, string)>();
@@ -84,7 +85,7 @@ namespace Analogy.LogViewer.Log4Net
             return files;
         }
 
-        public override Task InitializeDataProvider(IAnalogyLogger logger)
+        public override Task InitializeDataProvider(ILogger logger)
         {
             Parser = new RegexParser(UserSettingsManager.UserSettings.Settings, true, logger);
             return base.InitializeDataProvider(logger);

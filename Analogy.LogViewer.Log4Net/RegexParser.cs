@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Analogy.Interfaces.DataTypes;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.LogViewer.Log4Net
 {
@@ -18,7 +19,7 @@ namespace Analogy.LogViewer.Log4Net
         private readonly List<IAnalogyLogMessage> _messages = new List<IAnalogyLogMessage>();
         private readonly UserSettings _settings;
         private readonly bool updateUIAfterEachParsedLine;
-        private IAnalogyLogger Logger { get; }
+        private ILogger Logger { get; }
 
         private IEnumerable<RegexPattern> LogPatterns
         {
@@ -59,7 +60,7 @@ namespace Analogy.LogViewer.Log4Net
             }
         }
 
-        public RegexParser(UserSettings settings, bool updateUIAfterEachLine, IAnalogyLogger logger)
+        public RegexParser(UserSettings settings, bool updateUIAfterEachLine, ILogger logger)
         {
             Logger = logger;
             _settings = settings;
@@ -198,7 +199,7 @@ namespace Analogy.LogViewer.Log4Net
                                 m.RawTextType = AnalogyRowTextType.PlainText;
                                 break;
                             default:
-                                throw new ArgumentOutOfRangeException();
+                                throw new ArgumentOutOfRangeException($"Error in message type {regexMember.Value}");
                         }
                     }
 
@@ -212,7 +213,7 @@ namespace Analogy.LogViewer.Log4Net
             catch (Exception e)
             {
                 string error = $"Error parsing line: {e.Message}";
-                Logger?.LogException(error,e, nameof(RegexParser));
+                Logger?.LogError(e, error);
                 message = new AnalogyLogMessage(error, AnalogyLogLevel.Error, AnalogyLogClass.General,
                     nameof(RegexParser));
                 return false;
@@ -350,7 +351,7 @@ namespace Analogy.LogViewer.Log4Net
                                 m.RawTextType = AnalogyRowTextType.PlainText;
                                 break;
                             default:
-                                throw new ArgumentOutOfRangeException(); 
+                                throw new ArgumentOutOfRangeException($"Error in message type {regexMember.Value}"); 
                         }
                     }
 
@@ -438,7 +439,7 @@ namespace Analogy.LogViewer.Log4Net
             }
             catch (Exception e)
             {
-                Logger.LogException($"Error reading file: {e.Message}",e, nameof(ParseLog));
+                Logger.LogError(e, $"Error reading file: {e.Message}",e);
                 AnalogyLogMessage error = new AnalogyLogMessage($"Error reading file: {e.Message}", AnalogyLogLevel.Critical, AnalogyLogClass.General, "Analogy", "Analogy");
                 messagesHandler.AppendMessages(_messages, fileName);
                 _messages.Add(error);

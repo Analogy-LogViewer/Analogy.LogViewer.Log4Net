@@ -13,7 +13,7 @@ namespace Analogy.LogViewer.Log4Net.UnitTests
     public class RegexParserShould
     {
         [TestMethod]
-        public void Parse_To_Log_Message()
+        public void ParseToLogMessage()
         {
             //var regEx = @"(?<Date>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}) \[(?<Thread>\d+)\] (?<Level>.*)   (?<Source>.*) - (?<Text>.*)";
             var regEx = @"(?<Date>\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2},\d{3})\s\[(?<Thread>\d+)\]\s(?<Level>.*)\s(?<Source>.*)\s-\s(?<Text>.*)";

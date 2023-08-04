@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.LogViewer.Log4Net.IAnalogy
 {
@@ -17,7 +18,7 @@ namespace Analogy.LogViewer.Log4Net.IAnalogy
         public override Guid FactoryId { get; set; } = Log4NetFactory.Log4NetFactoryId;
         public override Guid Id { get; set; } = new Guid("2D09F7E7-C55E-41B0-8068-A474D2361F85");
 
-        public override void CreateUserControl(IAnalogyLogger logger)
+        public override void CreateUserControl(ILogger logger)
         {
             DataProviderSettings = new UserSetttingsUC();
         }

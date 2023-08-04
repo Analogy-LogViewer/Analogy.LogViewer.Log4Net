@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Analogy.LogViewer.Template.Managers;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.LogViewer.Log4Net.Managers
 {
@@ -31,7 +32,7 @@ namespace Analogy.LogViewer.Log4Net.Managers
                 }
                 catch (Exception ex)
                 {
-                    LogManager.Instance.LogCritical("", $"Unable to read file {SettingFile}: {ex}");
+                    LogManager.Instance.LogCritical(ex, "", $"Unable to read file {SettingFile}: {ex}");
                 }
             }
             

@@ -9,7 +9,7 @@ namespace Analogy.LogViewer.Log4Net
     {
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
-            yield return new AnalogyChangeLog("Initial commit (template)",AnalogChangeLogType.None, "Lior Banai", new DateTime(2019, 12, 08));
+            yield return new AnalogyChangeLog("Initial commit (template)",AnalogChangeLogType.None, "Lior Banai", new DateTime(2019, 12, 08), "");
         }
     }
 }
