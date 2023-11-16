@@ -11,7 +11,7 @@ namespace Analogy.LogViewer.Log4Net
         public string Title { get; set; } = "Log4Net Data Providers";
         public IEnumerable<IAnalogyDataProvider> DataProviders { get; } = new List<IAnalogyDataProvider>
             {
-                new OfflineDataProvider()
+                new OfflineDataProvider(),
             };
     }
 }

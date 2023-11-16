@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using Analogy.LogViewer.Template.Managers;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Analogy.LogViewer.Template.Managers;
-using Microsoft.Extensions.Logging;
 
 namespace Analogy.LogViewer.Log4Net.Managers
 {
@@ -25,17 +25,16 @@ namespace Analogy.LogViewer.Log4Net.Managers
                 {
                     var settings = new JsonSerializerSettings
                     {
-                        ObjectCreationHandling = ObjectCreationHandling.Replace
+                        ObjectCreationHandling = ObjectCreationHandling.Replace,
                     };
                     string data = File.ReadAllText(SettingFile);
-                    Settings = JsonConvert.DeserializeObject<UserSettings>(data,settings);
+                    Settings = JsonConvert.DeserializeObject<UserSettings>(data, settings);
                 }
                 catch (Exception ex)
                 {
                     LogManager.Instance.LogCritical(ex, "", $"Unable to read file {SettingFile}: {ex}");
                 }
             }
-            
         }
 
         public void Save()
@@ -47,10 +46,7 @@ namespace Analogy.LogViewer.Log4Net.Managers
             catch (Exception ex)
             {
                 LogManager.Instance.LogCritical("", $"Unable to save file {SettingFile}: {ex}");
-
             }
-
-
         }
     }
 }

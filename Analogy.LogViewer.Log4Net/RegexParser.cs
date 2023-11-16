@@ -1,4 +1,6 @@
 ﻿using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -7,8 +9,6 @@ using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Analogy.Interfaces.DataTypes;
-using Microsoft.Extensions.Logging;
 
 namespace Analogy.LogViewer.Log4Net
 {
@@ -66,7 +66,6 @@ namespace Analogy.LogViewer.Log4Net
             _settings = settings;
             updateUIAfterEachParsedLine = updateUIAfterEachLine;
         }
-
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool TryParse(string line, RegexPattern regex, out AnalogyLogMessage message)
@@ -185,9 +184,7 @@ namespace Analogy.LogViewer.Log4Net
                                               Enum.IsDefined(typeof(AnalogyLogClass), cls)
                                         ? cls
                                         : AnalogyLogClass.General;
-
                                 }
-
                                 continue;
                             case AnalogyLogMessagePropertyName.MachineName:
                                 m.MachineName = value;
@@ -337,7 +334,6 @@ namespace Analogy.LogViewer.Log4Net
                                               Enum.IsDefined(typeof(AnalogyLogClass), cls)
                                         ? cls
                                         : AnalogyLogClass.General;
-
                                 }
 
                                 break;
@@ -351,7 +347,7 @@ namespace Analogy.LogViewer.Log4Net
                                 m.RawTextType = AnalogyRowTextType.PlainText;
                                 break;
                             default:
-                                throw new ArgumentOutOfRangeException($"Error in message type {regexMember.Value}"); 
+                                throw new ArgumentOutOfRangeException($"Error in message type {regexMember.Value}");
                         }
                     }
 
@@ -382,7 +378,7 @@ namespace Analogy.LogViewer.Log4Net
                     using (StreamReader reader = new StreamReader(logFileStream))
                     {
                         string line;
-                        long count=0;
+                        long count = 0;
                         while ((line = await reader.ReadLineAsync()) != null)
                         {
                             AnalogyLogMessage entry = null;
@@ -439,13 +435,12 @@ namespace Analogy.LogViewer.Log4Net
             }
             catch (Exception e)
             {
-                Logger.LogError(e, $"Error reading file: {e.Message}",e);
+                Logger.LogError(e, $"Error reading file: {e.Message}", e);
                 AnalogyLogMessage error = new AnalogyLogMessage($"Error reading file: {e.Message}", AnalogyLogLevel.Critical, AnalogyLogClass.General, "Analogy", "Analogy");
                 messagesHandler.AppendMessages(_messages, fileName);
                 _messages.Add(error);
                 return _messages;
             }
         }
-
     }
 }

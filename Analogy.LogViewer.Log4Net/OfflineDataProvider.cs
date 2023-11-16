@@ -1,5 +1,7 @@
 ﻿using Analogy.Interfaces;
 using Analogy.LogViewer.Log4Net.Managers;
+using Analogy.LogViewer.Template.Managers;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -7,8 +9,6 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Analogy.LogViewer.Template.Managers;
-using Microsoft.Extensions.Logging;
 
 namespace Analogy.LogViewer.Log4Net
 {
@@ -24,19 +24,16 @@ namespace Analogy.LogViewer.Log4Net
         public override string InitialFolderFullPath { get; set; } = Environment.CurrentDirectory;
         public override Image? SmallImage { get; set; }
         public override Image? LargeImage { get; set; }
-
-
         public override bool DisableFilePoolingOption { get; set; }
         private RegexParser Parser { get; set; }
-        public override IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders()
+        public override IEnumerable<(string OriginalHeader, string ReplacementHeader)> GetReplacementHeaders()
             => Array.Empty<(string, string)>();
 
-        public override (Color backgroundColor, Color foregroundColor) GetColorForMessage(IAnalogyLogMessage logMessage)
+        public override (Color BackgroundColor, Color ForegroundColor) GetColorForMessage(IAnalogyLogMessage logMessage)
             => (Color.Empty, Color.Empty);
         public override async Task<IEnumerable<IAnalogyLogMessage>> Process(string fileName, CancellationToken token,
             ILogMessageCreatedHandler messagesHandler)
         {
-
             List<IAnalogyLogMessage> messages = await Parser.ParseLog(fileName, token, messagesHandler);
             return messages;
         }

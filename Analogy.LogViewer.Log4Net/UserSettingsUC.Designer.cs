@@ -1,6 +1,6 @@
 ﻿namespace Analogy.LogViewer.Log4Net
 {
-    partial class UserSetttingsUC
+    partial class UserSettingsUC
     {
         /// <summary> 
         /// Required designer variable.
@@ -322,7 +322,7 @@
             this.Controls.Add(this.txtLogsLocation);
             this.Controls.Add(this.lblPath);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "UserSetttingsUC";
+            this.Name = "UserSettingsUC";
             this.Size = new System.Drawing.Size(890, 635);
             this.Load += new System.EventHandler(this.UserSetttingsUC_Load);
             this.gbresult.ResumeLayout(false);

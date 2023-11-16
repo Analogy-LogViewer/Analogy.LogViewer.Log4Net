@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Analogy.Interfaces;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Analogy.Interfaces;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Analogy.LogViewer.Log4Net.UnitTests
 {
@@ -24,8 +24,6 @@ namespace Analogy.LogViewer.Log4Net.UnitTests
             bool valid = RegexParser.CheckRegex(testString, p, out AnalogyLogMessage m);
 
             Assert.IsTrue(valid);
-
         }
-
     }
 }

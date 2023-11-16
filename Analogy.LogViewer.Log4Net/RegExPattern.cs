@@ -14,7 +14,6 @@ namespace Analogy.LogViewer.Log4Net
             Pattern = string.Empty;
             DateTimeFormat = "yyyy-MM-dd HH:mm:ss,fff";
             GuidFormat = string.Empty;
-
         }
         public RegexPattern(string pattern, string dateTimeFormat, string guidFormat)
         {
@@ -26,4 +25,3 @@ namespace Analogy.LogViewer.Log4Net
         public override string ToString() => $"Pattern: {Pattern}, DateTimeFormat: {DateTimeFormat}, GuidFormat: {GuidFormat}";
     }
 }
-

@@ -1,11 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29519.181
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analogy.LogViewer.Log4Net", "Analogy.LogViewer.Log4Net\Analogy.LogViewer.Log4Net.csproj", "{F4F91FED-5279-4D28-9004-EDFA080759BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Analogy.LogViewer.Log4Net.UnitTests", "Analogy.LogViewer.Log4Net.UnitTests\Analogy.LogViewer.Log4Net.UnitTests.csproj", "{8A301EE5-F7F7-4FA9-90D5-DBF43F97ABA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analogy.LogViewer.Log4Net.UnitTests", "Analogy.LogViewer.Log4Net.UnitTests\Analogy.LogViewer.Log4Net.UnitTests.csproj", "{8A301EE5-F7F7-4FA9-90D5-DBF43F97ABA7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{39743057-1607-43D0-8F6B-73A0F2754BC4}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Directory.Build.props = Directory.Build.props
+		.github\workflows\dotnet-core-desktop.yml = .github\workflows\dotnet-core-desktop.yml
+		nuget.config = nuget.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,11 +1,11 @@
-﻿using Analogy.LogViewer.Log4Net.Managers;
+﻿using Analogy.Interfaces;
+using Analogy.LogViewer.Log4Net.Managers;
 using Analogy.LogViewer.Log4Net.Properties;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Interfaces;
-using Microsoft.Extensions.Logging;
 
 namespace Analogy.LogViewer.Log4Net.IAnalogy
 {
@@ -20,7 +20,7 @@ namespace Analogy.LogViewer.Log4Net.IAnalogy
 
         public override void CreateUserControl(ILogger logger)
         {
-            DataProviderSettings = new UserSetttingsUC();
+            DataProviderSettings = new UserSettingsUC();
         }
 
         public override Task SaveSettingsAsync()

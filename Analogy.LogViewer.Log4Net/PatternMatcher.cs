@@ -69,7 +69,7 @@ namespace Analogy.LogViewer.Log4Net
                 {
                     int num2 = (sourceArray[index++] + 1) / 2;
                     num3 = 0;
-                    Label_00F2:
+                Label_00F2:
                     if (num2 != expression.Length)
                     {
                         num2 += num3;
@@ -162,7 +162,7 @@ namespace Analogy.LogViewer.Log4Net
                             }
                         }
                     }
-                    Label_028D:
+                Label_028D:
                     if ((index < num7) && (num6 < num5))
                     {
                         while (num6 < num5)

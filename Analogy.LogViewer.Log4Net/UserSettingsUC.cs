@@ -8,12 +8,10 @@ using System.Windows.Forms;
 
 namespace Analogy.LogViewer.Log4Net
 {
-    public partial class UserSetttingsUC : UserControl
+    public partial class UserSettingsUC : UserControl
     {
-
         private UserSettings Settings => UserSettingsManager.UserSettings.Settings;
-
-        public UserSetttingsUC()
+        public UserSettingsUC()
         {
             InitializeComponent();
         }
@@ -22,7 +20,7 @@ namespace Analogy.LogViewer.Log4Net
         {
             using (FolderBrowserDialog folderDlg = new FolderBrowserDialog
             {
-                ShowNewFolderButton = false
+                ShowNewFolderButton = false,
             })
             {
                 // Show the FolderBrowserDialog.  
@@ -58,7 +56,6 @@ namespace Analogy.LogViewer.Log4Net
             Settings.SupportFormats = txtbSupportedFiles.Text.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
                 .ToList();
             Settings.RegexPatterns = lstbRegularExpressions.Items.Cast<RegexPattern>().ToList();
-
         }
 
         private void btnTest_Click(object sender, EventArgs e)
@@ -110,7 +107,7 @@ namespace Analogy.LogViewer.Log4Net
                 {
                     Filter = txtbOpenFileFilters.Text,
                     Title = @"Test Open Files",
-                    Multiselect = true
+                    Multiselect = true,
                 };
                 openFileDialog1.ShowDialog(this);
             }
@@ -118,8 +115,6 @@ namespace Analogy.LogViewer.Log4Net
             {
                 MessageBox.Show($"Incorrect filter: {exception.Message}", "Invalid filter text", MessageBoxButtons.OK);
             }
-
-
         }
     }
 }
