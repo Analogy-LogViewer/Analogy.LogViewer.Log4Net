@@ -3,6 +3,8 @@
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
 		<TargetFrameworks>net9.0-windows;net8.0-windows;net48</TargetFrameworks>
+		<VersionPrefix>7.1.0</VersionPrefix>
+		<VersionSuffix></VersionSuffix>
 		<Authors>Lior Banai</Authors>
 		<Description>Log4Net Log parser for Analogy Log Viewer</Description>
 		<Copyright>Lior Banai 2020-2025</Copyright>
@@ -10,8 +12,6 @@
 		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.Log4Net</RepositoryUrl>
 		<PackageIcon>Analogy.Log4Net.png</PackageIcon>
 		<Company>Analogy.LogViewer</Company>
-		<VersionPrefix>7.0.0</VersionPrefix>
-		<VersionSuffix></VersionSuffix>
 	</PropertyGroup>
 
 	<ItemGroup>
