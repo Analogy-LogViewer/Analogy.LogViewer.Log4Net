@@ -86,7 +86,7 @@ namespace Analogy.LogViewer.Log4Net
                         {
                             case AnalogyLogMessagePropertyName.Date:
                                 if (!string.IsNullOrEmpty(value) &&
-                                    DateTime.TryParseExact(value, regex.DateTimeFormat, CultureInfo.InvariantCulture,
+                                    DateTimeOffset.TryParseExact(value, regex.DateTimeFormat, CultureInfo.InvariantCulture,
                                         DateTimeStyles.None, out var date))
                                 {
                                     m.Date = date;
@@ -236,7 +236,7 @@ namespace Analogy.LogViewer.Log4Net
                         {
                             case AnalogyLogMessagePropertyName.Date:
                                 if (!string.IsNullOrEmpty(value) &&
-                                    DateTime.TryParseExact(value, regex.DateTimeFormat, CultureInfo.InvariantCulture,
+                                    DateTimeOffset.TryParseExact(value, regex.DateTimeFormat, CultureInfo.InvariantCulture,
                                         DateTimeStyles.None, out var date))
                                 {
                                     m.Date = date;
