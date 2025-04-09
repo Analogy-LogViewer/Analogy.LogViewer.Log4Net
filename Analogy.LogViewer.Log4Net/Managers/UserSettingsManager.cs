@@ -1,6 +1,5 @@
 ﻿using Analogy.LogViewer.Template.Managers;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,12 +22,8 @@ namespace Analogy.LogViewer.Log4Net.Managers
             {
                 try
                 {
-                    var settings = new JsonSerializerSettings
-                    {
-                        ObjectCreationHandling = ObjectCreationHandling.Replace,
-                    };
                     string data = File.ReadAllText(SettingFile);
-                    Settings = JsonConvert.DeserializeObject<UserSettings>(data, settings);
+                    Settings = System.Text.Json.JsonSerializer.Deserialize<UserSettings>(data);
                 }
                 catch (Exception ex)
                 {
@@ -41,7 +36,7 @@ namespace Analogy.LogViewer.Log4Net.Managers
         {
             try
             {
-                File.WriteAllText(SettingFile, JsonConvert.SerializeObject(Settings));
+                File.WriteAllText(SettingFile, System.Text.Json.JsonSerializer.Serialize(Settings));
             }
             catch (Exception ex)
             {
