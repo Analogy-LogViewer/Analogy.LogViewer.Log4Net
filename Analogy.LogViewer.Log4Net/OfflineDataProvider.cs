@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Analogy.LogViewer.Log4Net
 {
-    public class OfflineDataProvider : Template.OfflineDataProvider
+    public class OfflineDataProvider : Template.OfflineDataProviderWinForms
     {
         public override Guid Id { get; set; } = new Guid("E1696270-97BE-489F-9440-453BEA1AB7B8");
         public override string OptionalTitle { get; set; } = string.Empty;
@@ -28,7 +28,7 @@ namespace Analogy.LogViewer.Log4Net
         public override bool DisableFilePoolingOption { get; set; }
         private RegexParser Parser { get; set; }
         public override IEnumerable<(string OriginalHeader, string ReplacementHeader)> GetReplacementHeaders()
-            => Array.Empty<(string, string)>();
+            => [];
 
         public override (Color BackgroundColor, Color ForegroundColor) GetColorForMessage(IAnalogyLogMessage logMessage)
             => (Color.Empty, Color.Empty);

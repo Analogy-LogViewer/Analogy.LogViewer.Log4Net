@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Analogy.LogViewer.Log4Net.IAnalogy
 {
-    public class Log4NetDataProviderSettings : Template.TemplateUserSettingsFactory
+    public class Log4NetDataProviderSettings : Template.TemplateUserSettingsFactoryWinForms
     {
         public override string Title { get; set; } = "Log4Net settings";
         public override UserControl DataProviderSettings { get; set; }

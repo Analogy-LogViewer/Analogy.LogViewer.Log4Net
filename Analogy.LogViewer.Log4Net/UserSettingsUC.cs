@@ -1,4 +1,5 @@
 ﻿using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using Analogy.LogViewer.Log4Net.Managers;
 using System;
 using System.Data;
