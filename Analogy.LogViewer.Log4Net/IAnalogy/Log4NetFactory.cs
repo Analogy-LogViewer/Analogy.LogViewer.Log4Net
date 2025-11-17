@@ -1,13 +1,14 @@
 ﻿using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 using Analogy.LogViewer.Log4Net.Properties;
+using Analogy.LogViewer.Template.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 
 namespace Analogy.LogViewer.Log4Net
 {
-    public class Log4NetFactory : Template.PrimaryFactoryWinForms
+    public class Log4NetFactory : PrimaryFactoryWinForms
     {
         internal static Guid Log4NetFactoryId = new Guid("DBC17C75-5212-46E3-B98A-539E779000E3");
         public override Guid FactoryId { get; set; } = Log4NetFactoryId;

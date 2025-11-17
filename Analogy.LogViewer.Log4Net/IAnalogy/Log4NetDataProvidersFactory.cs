@@ -2,18 +2,18 @@
 using Analogy.Interfaces.Factories;
 using Analogy.Interfaces.WinForms;
 using Analogy.Interfaces.WinForms.Factories;
+using Analogy.LogViewer.Template.WinForms;
 using System;
 using System.Collections.Generic;
 
 namespace Analogy.LogViewer.Log4Net
 {
-    public class Log4NetDataProvidersFactory : IAnalogyDataProvidersFactoryWinForms
+    public class Log4NetDataProvidersFactory : DataProvidersFactoryWinForms
     {
-        public Guid FactoryId { get; set; } = Log4NetFactory.Log4NetFactoryId;
-        public string Title { get; set; } = "Log4Net Data Providers";
-        IEnumerable<IAnalogyDataProvider> IAnalogyDataProvidersFactory.DataProviders => DataProviders;
+        public override Guid FactoryId { get; set; } = Log4NetFactory.Log4NetFactoryId;
+        public override string Title { get; set; } = "Log4Net Data Providers";
 
-        public IEnumerable<IAnalogyDataProviderWinForms> DataProviders { get; } = new List<IAnalogyDataProviderWinForms>
+        public IEnumerable<IAnalogyDataProvider> DataProviders { get; } = new List<IAnalogyDataProvider>
             {
                 new OfflineDataProvider(),
             };

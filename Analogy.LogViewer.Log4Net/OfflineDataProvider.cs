@@ -2,6 +2,7 @@
 using Analogy.Interfaces.DataTypes;
 using Analogy.LogViewer.Log4Net.Managers;
 using Analogy.LogViewer.Template.Managers;
+using Analogy.LogViewer.Template.WinForms;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Analogy.LogViewer.Log4Net
 {
-    public class OfflineDataProvider : Template.OfflineDataProviderWinForms
+    public class OfflineDataProvider : OfflineDataProviderWinForms
     {
         public override Guid Id { get; set; } = new Guid("E1696270-97BE-489F-9440-453BEA1AB7B8");
         public override string OptionalTitle { get; set; } = string.Empty;

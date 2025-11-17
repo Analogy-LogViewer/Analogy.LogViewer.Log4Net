@@ -1,6 +1,7 @@
 ﻿using Analogy.Interfaces;
 using Analogy.LogViewer.Log4Net.Managers;
 using Analogy.LogViewer.Log4Net.Properties;
+using Analogy.LogViewer.Template.WinForms;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Drawing;
@@ -9,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Analogy.LogViewer.Log4Net.IAnalogy
 {
-    public class Log4NetDataProviderSettings : Template.TemplateUserSettingsFactoryWinForms
+    public class Log4NetDataProviderSettings : TemplateUserSettingsFactoryWinForms
     {
         public override string Title { get; set; } = "Log4Net settings";
         public override UserControl DataProviderSettings { get; set; }
