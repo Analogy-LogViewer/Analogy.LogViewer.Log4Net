@@ -13,7 +13,7 @@ namespace Analogy.LogViewer.Log4Net
         public override Guid FactoryId { get; set; } = Log4NetFactory.Log4NetFactoryId;
         public override string Title { get; set; } = "Log4Net Data Providers";
 
-        public IEnumerable<IAnalogyDataProvider> DataProviders { get; } = new List<IAnalogyDataProvider>
+        public override IEnumerable<IAnalogyDataProvider> DataProviders { get; set; } = new List<IAnalogyDataProvider>
             {
                 new OfflineDataProvider(),
             };
